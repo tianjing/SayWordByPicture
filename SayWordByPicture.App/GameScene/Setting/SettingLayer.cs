@@ -25,11 +25,7 @@ namespace SayWordByPicture.App.GameScene.Setting
 
         private void LoadMenu()
         {
-
-
-
             CreateQuestionNumItem();
-
         }
 
         private void CreateQuestionNumItem()
@@ -37,8 +33,8 @@ namespace SayWordByPicture.App.GameScene.Setting
             float y = 400;
 
             SettingMenuHelper.AddTitleMenu(this, "发音", ref y);
-            SettingMenuHelper.AddSetMenu(this, GetLanguageString(), "image/Left", "image/Right",SettingLanguageCallback,SettingLanguageCallback, ref y);
-            
+            SettingMenuHelper.AddSetMenu(this, GetLanguageString(), "image/Left", "image/Right", SettingLanguageCallback, SettingLanguageCallback, ref y);
+
             SettingMenuHelper.AddTitleMenu(this, "答案选项数", ref y);
             SettingMenuHelper.AddSetMenu(this, Platform.QuestionNum.ToString(), "image/Left", "image/Right", ReduceQuestionNumCallback, AddQuestionNumCallback, ref y);
 
@@ -67,25 +63,46 @@ namespace SayWordByPicture.App.GameScene.Setting
         }
         public void SettingLanguageCallback(CCObject pSender)
         {
-            switch (Platform.QuestionLanguage)
+            try
             {
-                case Language.Enlish: Platform.QuestionLanguage = Language.Chinese; break;
-                case Language.Chinese:
-                default: Platform.QuestionLanguage = Language.Enlish; break;
+                switch (Platform.QuestionLanguage)
+                {
+                    case Language.Enlish: Platform.QuestionLanguage = Language.Chinese; break;
+                    case Language.Chinese:
+                    default: Platform.QuestionLanguage = Language.Enlish; break;
+                }
+                SceneController.RunScene(EnumScene.Setting);
             }
-            SceneController.RunScene(EnumScene.Setting);
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
 
         public void AddQuestionNumCallback(CCObject pSender)
         {
-            Platform.QuestionNum += 2;
-            SceneController.RunScene(EnumScene.Setting);
+            try
+            {
+                Platform.QuestionNum += 2;
+                SceneController.RunScene(EnumScene.Setting);
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
         public void ReduceQuestionNumCallback(CCObject pSender)
         {
-            Platform.QuestionNum -= 2;
-            SceneController.RunScene(EnumScene.Setting);
-        } 
+            try
+            {
+                Platform.QuestionNum -= 2;
+                SceneController.RunScene(EnumScene.Setting);
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
+        }
 
     }
 }

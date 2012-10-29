@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
 using System.IO;
 using System.IO.IsolatedStorage;
-using System.Windows.Resources;
 using System.Windows;
 using cocos2d;
 using SayWordByPicture.App;

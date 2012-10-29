@@ -97,10 +97,6 @@
       <Project>{9B897CAB-FA75-4F41-A4F0-8F0E943583F1}</Project>
       <Name>SayWordByPicture.App</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SayWordByPicture.TextToSpeech\SayWordByPicture.TextToSpeech.csproj">
-      <Project>{A2894A95-C93E-4622-AAF2-4EDC57AB3641}</Project>
-      <Name>SayWordByPicture.TextToSpeech</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SayWordByPictureContent\SayWordByPictureContent.contentproj">
       <Name>SayWordByPictureContent %28Content%29</Name>
       <XnaReferenceType>Content</XnaReferenceType>

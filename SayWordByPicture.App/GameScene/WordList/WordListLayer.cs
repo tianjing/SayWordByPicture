@@ -95,16 +95,23 @@ namespace SayWordByPicture.App.GameScene.WordManage
         /// </summary>
         public void DeleteClick(CCObject pSender)
         {
-            CCMenuItemLabel label = pSender as CCMenuItemLabel;
-            if (null != label && null != label.userData)
+            try
             {
-                Word word = label.userData as Word;
-                if (DataBaseManager.Delete(word.Id))
+                CCMenuItemLabel label = pSender as CCMenuItemLabel;
+                if (null != label && null != label.userData)
                 {
-                    DataManager.RefreshWords();
-                    WordListScene wms = new WordListScene();
-                    wms.Run(this.position);
+                    Word word = label.userData as Word;
+                    if (DataBaseManager.Delete(word.Id))
+                    {
+                        DataManager.RefreshWords();
+                        WordListScene wms = new WordListScene();
+                        wms.Run(this.position);
+                    }
                 }
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
             }
         }
         private void GetTotalHeight()
@@ -117,14 +124,12 @@ namespace SayWordByPicture.App.GameScene.WordManage
         public override void ccTouchesBegan(List<CCTouch> pTouches, CCEvent pEvent)
         {
             CCTouch touch = pTouches.FirstOrDefault();
-
             m_tBeginPos = touch.locationInView(touch.view());
             m_tBeginPos = CCDirector.sharedDirector().convertToGL(m_tBeginPos);
         }
         public override void ccTouchesMoved(List<CCTouch> pTouches, CCEvent pEvent)
         {
             CCTouch touch = pTouches.FirstOrDefault();
-
             CCPoint touchLocation = touch.locationInView(touch.view());
             touchLocation = CCDirector.sharedDirector().convertToGL(touchLocation);
             float nMoveY = touchLocation.y - m_tBeginPos.y;

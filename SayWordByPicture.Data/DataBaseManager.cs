@@ -157,7 +157,7 @@ namespace SayWordByPicture.Data
             {
                 ChineseName = "ºÚÝ®",
                 EnglishName = "Blackberry",
-                PictureFile = "Banana.jpg",
+                PictureFile = "Blackberry.jpg",
                 IsContent = true,
             });
             #endregion

@@ -24,11 +24,14 @@ namespace SayWordByPicture.App.GameScene.Examination
             this.isTouchEnabled = true;
             BackGroundInit();
             QuestionInit();
-            SpeakerLoad();
+           // SpeakerLoad();
+
+            FloorLayer floor = new FloorLayer(m_Answers[AnswerNumber-1].StudyInfo);
+            addChild(floor);
         }
         Speaker m_Speaker;
         List<Selection> m_Answers;
-        QuestionAction SayAction;
+        //QuestionAction SayAction;
         /// <summary>
         /// ±≥æ∞≥ı ºªØ
         /// </summary>
@@ -41,11 +44,11 @@ namespace SayWordByPicture.App.GameScene.Examination
         private void SpeakerLoad()
         {
             m_Speaker = new Speaker();
-            m_Speaker.position = new CCPoint(400, 240);
-            m_Speaker.SayAction = SayAction;
+            m_Speaker.position = new CCPoint(CCDirector.sharedDirector().getWinSize().width - (m_Speaker.contentSize.width / 2), m_Speaker.contentSize.height / 2);
+           // m_Speaker.SayAction = SayAction;
             addChild(m_Speaker);
         }
-        private Int32 m_StillWhile = 50;
+        private Int32 m_StillWhile = 80;
         private void QuestionInit()
         {
             CCSize size = CCDirector.sharedDirector().getWinSize();
@@ -63,7 +66,7 @@ namespace SayWordByPicture.App.GameScene.Examination
             {
                 if (i > 0 && (i % lineNum) == 0)
                 {
-                    curr.x = m_StillWhile+(oneSize.width / 2);
+                    curr.x = (m_StillWhile/2)+(oneSize.width / 2);
                     curr.y -= (oneSize.height + m_StillWhile/2);
                 }
 
@@ -73,18 +76,16 @@ namespace SayWordByPicture.App.GameScene.Examination
                 select.position = new CCPoint(curr.x, curr.y);
                 curr.x += oneSize.width + m_StillWhile;
 
-                if (i == AnswerNumber - 1)
-                {
-                    SayAction = new QuestionAction(select);
-                }
-                select.visible = true;
+              //  if (i == AnswerNumber - 1)
+              //  {
+              //      SayAction = new QuestionAction(select);
+              //  }
+                //select.visible = true;
                 this.addChild(select);
                 m_Answers.Add(select);
             }
-            runAction(SayAction);
+            //runAction(SayAction);
         }
-
-
 
 
         private void GetAnswerNumber()
@@ -96,21 +97,5 @@ namespace SayWordByPicture.App.GameScene.Examination
         /// </summary>
         public Int32 AnswerNumber { get; set; }
 
-        public override void ccTouchesEnded(List<CCTouch> touches, CCEvent event_)
-        {
-            base.ccTouchesEnded(touches, event_);
-            Int32 length = this.children.Count;
-            for (int i = 0; i < length; i++)
-            {
-                if (IsTouchNode(this.children[i], touches))
-                {
-                    ITouchProcess clicker = this.children[i] as ITouchProcess;
-                    if (null != clicker)
-                    {
-                        clicker.OnClick(this);
-                    }
-                }
-            }
-        }
     }
 }

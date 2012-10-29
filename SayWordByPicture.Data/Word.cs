@@ -2,9 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using SayWordByPicture.Lib.File;
 using Microsoft.Xna.Framework.Media;
-using System.Windows.Controls;
 using Microsoft.Xna.Framework.Audio;
 
 namespace SayWordByPicture.Data
@@ -69,23 +67,26 @@ namespace SayWordByPicture.Data
         public bool HasEnglishAudio
         {
             get
-            { return FileLoader.IsolatedStorageFileExists(EnglishAudioFilePath); }
+            { return PhoneServices.Storage.Current.FileExists(EnglishAudioFilePath); }
         }
         /// <summary>
         /// 中文音频 是否存在
         /// </summary>
-        public bool HasChineseAudio { get { return FileLoader.IsolatedStorageFileExists(ChineseAudioFilePath); } }
+        public bool HasChineseAudio { get { return PhoneServices.Storage.Current.FileExists(ChineseAudioFilePath); } }
         /// <summary>
         /// 播放中文
         /// </summary>
         public void PlayChinese()
        {
            if (HasChineseAudio) {
+#if WINPHONE
                SoundEffect sound = SoundEffect.FromStream(FileLoader.ReadFile(false, ChineseAudioFilePath));
                SoundEffectInstance player = sound.CreateInstance();
                player.Volume = 1;
                player.Play();
-           }
+#endif
+               //TODO android
+               }
        }
         /// <summary>
         /// 播放英文
@@ -94,11 +95,15 @@ namespace SayWordByPicture.Data
         {
             if (HasEnglishAudio)
             {
+#if WINPHONE
                 SoundEffect sound = SoundEffect.FromStream(FileLoader.ReadFile(false,EnglishAudioFilePath));
                 SoundEffectInstance player = sound.CreateInstance();
                 player.Volume = 1;
                 player.Play();
+#endif
+                //TODO android
             }
+
         }
     }
 }

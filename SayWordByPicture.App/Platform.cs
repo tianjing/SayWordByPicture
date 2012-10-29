@@ -5,16 +5,12 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SayWordByPicture.Lib.Core;
+using PhoneServices;
 
 namespace SayWordByPicture.App
 {
     public static class Platform
     {
-        static Platform()
-        {
-            AppSetting = System.IO.IsolatedStorage.IsolatedStorageSettings.ApplicationSettings;
-        }
-        static System.IO.IsolatedStorage.IsolatedStorageSettings AppSetting{get;set;}
 
         /// <summary>
         /// 一次出题数量
@@ -24,10 +20,15 @@ namespace SayWordByPicture.App
             get
             {
                 Int32 num = 0;
-                if (!AppSetting.TryGetValue("QuestionNum", out num))
+                Object obj;
+                if (! AppConfig.Current.TryGetValue("QuestionNum", out obj))
                 {
                     num = 4;
-                    SetData("QuestionNum", num);
+                    AppConfig.Current.SetValue("QuestionNum", num);
+                }
+                else
+                {
+                    num = (Int32)obj;
                 }
                 return num;
             }
@@ -35,20 +36,8 @@ namespace SayWordByPicture.App
             {
                 Int32 setvalue=value<=4?4:value;
                 setvalue = setvalue >= 6 ? 6 : setvalue;
-                SetData("QuestionNum", setvalue);
+                AppConfig.Current.SetValue("QuestionNum", setvalue);
             }
-        }
-        private static void SetData(String p_Key, Object value)
-        {
-            if (!AppSetting.Contains(p_Key))
-            {
-                AppSetting.Add(p_Key, value);
-            }
-            else
-            {
-                AppSetting[p_Key] = value;
-            }
-            AppSetting.Save();
         }
         /// <summary>
         /// 出题时的发音
@@ -58,16 +47,21 @@ namespace SayWordByPicture.App
             get
             {
                 Language value;
-                if (!AppSetting.TryGetValue("QuestionLanguage", out value))
+                Object obj;
+                if (!AppConfig.Current.TryGetValue("QuestionLanguage", out obj))
                 {
                     value = Language.Enlish;
-                    SetData("QuestionLanguage", value);
+                    AppConfig.Current.SetValue("QuestionLanguage", value);
+                }
+                else
+                {
+                    value = (Language)obj;
                 }
                 return value;
             }
             set 
             {
-                SetData("QuestionLanguage", value);
+                AppConfig.Current.SetValue("QuestionLanguage", value);
             }
         }
     }

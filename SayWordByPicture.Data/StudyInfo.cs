@@ -85,6 +85,7 @@ namespace SayWordByPicture.Data
         /// <returns></returns>
         private void LoadSoud()
         {
+#if WINPHONE
             foreach (var key in m_LangInfo)
             {
                 Sounds.Add(key.Key,
@@ -92,6 +93,8 @@ namespace SayWordByPicture.Data
                     );
 
             }
+#endif
+            //TODO android
         }
         #endregion
 

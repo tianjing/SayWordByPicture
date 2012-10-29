@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual Studio 2010 Express for Windows Phone
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayWordByPicture", "SayWordByPicture\SayWordByPicture\SayWordByPicture.csproj", "{6F4E068C-3763-44B2-88D8-E0E769158818}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayWordByPictureContent", "SayWordByPicture\SayWordByPictureContent\SayWordByPictureContent.contentproj", "{2923B09B-9CCE-4D23-A9E9-89B2ACA8FF9E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lib", "Lib", "{884536C3-B2A9-486E-8738-D94EA62E7EE7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayWordByPicture.Lib", "Core\SayWordByPicture.Lib.csproj", "{9F403000-8E93-4D0E-883B-1F5FA9F68230}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayWordByPicture.Lib", "SayWordByPicture.Lib\SayWordByPicture.Lib.csproj", "{9F403000-8E93-4D0E-883B-1F5FA9F68230}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayWordByPicture.App", "SayWordByPicture.App\SayWordByPicture.App.csproj", "{9B897CAB-FA75-4F41-A4F0-8F0E943583F1}"
 EndProject
@@ -15,9 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FontProcess", "FontProcess\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayWordByPicture.Data", "SayWordByPicture.Data\SayWordByPicture.Data.csproj", "{BC8E6AF3-14AD-4F60-8174-14FBFF4237B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayWordByPicture.TextToSpeech", "SayWordByPicture.TextToSpeech\SayWordByPicture.TextToSpeech.csproj", "{A2894A95-C93E-4622-AAF2-4EDC57AB3641}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SayWordByPicture.Media", "SayWordByPicture.Media\SayWordByPicture.Media.csproj", "{539ED67F-50BF-49DC-A266-06E7DCF05BCC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneServices", "PhoneServices\PhoneServices.csproj", "{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -113,40 +109,26 @@ Global
 		{BC8E6AF3-14AD-4F60-8174-14FBFF4237B1}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
 		{BC8E6AF3-14AD-4F60-8174-14FBFF4237B1}.Release|Windows Phone.Build.0 = Release|Windows Phone
 		{BC8E6AF3-14AD-4F60-8174-14FBFF4237B1}.Release|x86.ActiveCfg = Release|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Debug|Any CPU.ActiveCfg = Debug|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Debug|Mixed Platforms.Build.0 = Debug|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Debug|x86.ActiveCfg = Debug|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Release|Any CPU.ActiveCfg = Release|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Release|Mixed Platforms.ActiveCfg = Release|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Release|Mixed Platforms.Build.0 = Release|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Release|Windows Phone.Build.0 = Release|Windows Phone
-		{A2894A95-C93E-4622-AAF2-4EDC57AB3641}.Release|x86.ActiveCfg = Release|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Debug|Any CPU.ActiveCfg = Debug|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Debug|Mixed Platforms.Build.0 = Debug|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Debug|x86.ActiveCfg = Debug|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Release|Any CPU.ActiveCfg = Release|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Release|Mixed Platforms.ActiveCfg = Release|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Release|Mixed Platforms.Build.0 = Release|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Release|Windows Phone.Build.0 = Release|Windows Phone
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC}.Release|x86.ActiveCfg = Release|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Debug|Any CPU.ActiveCfg = Debug|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Debug|Mixed Platforms.ActiveCfg = Debug|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Debug|Mixed Platforms.Build.0 = Debug|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Debug|Windows Phone.ActiveCfg = Debug|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Debug|Windows Phone.Build.0 = Debug|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Debug|x86.ActiveCfg = Debug|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Release|Any CPU.ActiveCfg = Release|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Release|Mixed Platforms.ActiveCfg = Release|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Release|Mixed Platforms.Build.0 = Release|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Release|Windows Phone.ActiveCfg = Release|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Release|Windows Phone.Build.0 = Release|Windows Phone
+		{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}.Release|x86.ActiveCfg = Release|Windows Phone
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{9F403000-8E93-4D0E-883B-1F5FA9F68230} = {884536C3-B2A9-486E-8738-D94EA62E7EE7}
-		{9B897CAB-FA75-4F41-A4F0-8F0E943583F1} = {884536C3-B2A9-486E-8738-D94EA62E7EE7}
 		{4002B687-F284-47F0-9BCD-5214F911B451} = {884536C3-B2A9-486E-8738-D94EA62E7EE7}
 		{BC8E6AF3-14AD-4F60-8174-14FBFF4237B1} = {884536C3-B2A9-486E-8738-D94EA62E7EE7}
 		{A2894A95-C93E-4622-AAF2-4EDC57AB3641} = {884536C3-B2A9-486E-8738-D94EA62E7EE7}
-		{539ED67F-50BF-49DC-A266-06E7DCF05BCC} = {884536C3-B2A9-486E-8738-D94EA62E7EE7}
 	EndGlobalSection
 EndGlobal

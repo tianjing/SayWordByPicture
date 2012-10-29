@@ -6,7 +6,6 @@ using Microsoft.Xna.Framework.Graphics;
 using SayWordByPicture.Lib.Core;
 using Microsoft.Xna.Framework;
 using cocos2d;
-using SayWordByPicture.Lib.File;
 using System.Windows;
 using SayWordByPicture.App.GameScene.Examination;
 using SayWordByPicture.App.GameScene.Start;

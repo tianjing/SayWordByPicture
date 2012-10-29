@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using cocos2d;
 using Microsoft.Xna.Framework.Graphics;
-using SayWordByPicture.Lib.File;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Media;
-using SayWordByPicture.TextToSpeech;
 namespace SayWordByPicture.App.GameScene.Start
 {
     internal sealed class StartLayer : CCLayer
@@ -49,7 +47,7 @@ namespace SayWordByPicture.App.GameScene.Start
 
             CCMenu menu = CCMenu.menuWithItems(startbutton, settingbutton, managebutton, addwordbutton, endbutton);
 
-            menu.alignItemsInColumns(1, 1, 1, 1,1);
+            menu.alignItemsInColumns(1, 1, 1, 1, 1);
             addChild(menu, 1);
         }
         /// <summary>
@@ -73,14 +71,28 @@ namespace SayWordByPicture.App.GameScene.Start
         /// </summary>
         public void SettingCallback(CCObject pSender)
         {
-            SceneController.RunScene(EnumScene.Setting);
+            try
+            {
+                SceneController.RunScene(EnumScene.Setting);
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
         /// <summary>
         /// 开始游戏事件
         /// </summary>
         public void StartCallback(CCObject pSender)
         {
-            SceneController.RunScene(EnumScene.Question);
+            try
+            {
+                SceneController.RunScene(EnumScene.Question);
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
         /// <summary>
         /// 退出事件
@@ -88,15 +100,36 @@ namespace SayWordByPicture.App.GameScene.Start
         /// <param name="pSender"></param>
         public void closeCallback(CCObject pSender)
         {
-            SceneController.ExitGame();
+            try
+            {
+                SceneController.ExitGame();
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
         public void WordListClick(CCObject pSender)
         {
-            SceneController.RunScene(EnumScene.WordList);
+            try
+            {
+                SceneController.RunScene(EnumScene.WordList);
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
         public void WordAddClick(CCObject pSender)
         {
-            SceneController.RunScene(EnumScene.AddWord);
+            try
+            {
+                SceneController.RunScene(EnumScene.AddWord);
+            }            
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
     }
 }

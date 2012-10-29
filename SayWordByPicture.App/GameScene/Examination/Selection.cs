@@ -19,21 +19,22 @@ namespace SayWordByPicture.App.GameScene.Examination
     /// <summary>
     /// 选项
     /// </summary>
-    internal sealed class Selection : CCSprite,ITouchProcess
+    internal sealed class Selection : CCSprite, ITouchProcess
     {
-        public Selection(Word p_StudyInfo, bool p_IsAnswer,Int32 p_Width,Int32 p_Height)
+        public Selection(Word p_StudyInfo, bool p_IsAnswer, Int32 p_Width, Int32 p_Height)
         {
             base.init();
             this.StudyInfo = p_StudyInfo;
 
             CCTexture2D texture = new CCTexture2D();
-            texture.initWithTexture(PictureManager.GetTexture2D(p_StudyInfo, p_Width, p_Height, false));
-            if (texture.PixelsWide < texture.PixelsHigh)
-            {
-                this.rotation = 90;
-            }
+            Texture2D sa = PictureManager.GetTexture2D(p_StudyInfo);
+
+            texture.initWithTexture(sa);
+            texture.PixelsWide = p_Width;
+            texture.PixelsHigh = p_Height;
+
             CCRect rect = new CCRect();
-            rect.size = new CCSize(texture.ContentSizeInPixels.width, texture.ContentSizeInPixels.height);
+            rect.size = new CCSize(p_Width, p_Height);
             this.initWithTexture(texture, rect);
 
             this.IsAnswer = p_IsAnswer;
@@ -43,7 +44,7 @@ namespace SayWordByPicture.App.GameScene.Examination
         {
             CCSize size = CCDirector.sharedDirector().getWinSize();
             ResultPeople = new ResultPeople(IsAnswer);
-            ResultPeople.position = new CCPoint(size.width / 2, size.height/2);
+            ResultPeople.position = new CCPoint(size.width / 2, size.height / 2);
         }
         ResultPeople ResultPeople { get; set; }
         public override void onEnter()
@@ -53,7 +54,7 @@ namespace SayWordByPicture.App.GameScene.Examination
         /// <summary>
         /// 是否是答案
         /// </summary>
-        public bool IsAnswer { get;private set; }
+        public bool IsAnswer { get; private set; }
         /// <summary>
         /// 学习信息
         /// </summary>
@@ -61,22 +62,28 @@ namespace SayWordByPicture.App.GameScene.Examination
 
         public void OnClick(CCLayer p_Layer)
         {
-            p_Layer.isTouchEnabled = false;
-            p_Layer.addChild(ResultPeople);
-            ResultPeople.Play((obj) => 
+            try
             {
-               
-                p_Layer.removeChild(ResultPeople,true);
-                if (IsAnswer)
+                p_Layer.isTouchEnabled = false;
+                p_Layer.addChild(ResultPeople);
+                ResultPeople.Play((obj) =>
                 {
-                    SceneController.RunScene(EnumScene.Question);
-                }
-                else
-                { 
-                     p_Layer.isTouchEnabled = true;
-                }
-            });
+                    p_Layer.removeChild(ResultPeople, true);
+                    if (IsAnswer)
+                    {
+                        SceneController.RunScene(EnumScene.Question);
+                    }
+                    else
+                    {
+                        p_Layer.isTouchEnabled = true;
+                    }
+                });
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
-        
+
     }
 }

@@ -21,7 +21,6 @@ namespace SayWordByPicture.App.Action
                 try
                 {
                     m_Sound.Play();
-                    String ss = "";
                 }
                 catch { }
             }

@@ -74,8 +74,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Core\Interface\ITouchProcess.cs" />
+    <Compile Include="ExceptionHelper.cs" />
     <Compile Include="GameScene\AddWord\AddWordScene.cs" />
     <Compile Include="GameScene\EnumScene.cs" />
+    <Compile Include="GameScene\Examination\FloorLayer.cs" />
     <Compile Include="GameScene\Examination\QuestionAction.cs" />
     <Compile Include="GameScene\Examination\QuestionScene.cs" />
     <Compile Include="GameScene\Examination\Selection.cs" />
@@ -88,29 +90,29 @@
     <Compile Include="GameScene\AddWord\AddWordLayer.cs" />
     <Compile Include="GameScene\WordList\WordListLayer.cs" />
     <Compile Include="GameScene\WordList\WordListScene.cs" />
+    <Compile Include="Media\AudioManager.cs" />
+    <Compile Include="Media\PictureManager.cs" />
     <Compile Include="People\ResultPeople.cs" />
     <Compile Include="GameScene\Examination\QuestionLayer.cs" />
     <Compile Include="People\Speaker.cs" />
+    <Compile Include="Photo\PhotoChooser.cs" />
+    <Compile Include="Photo\PhotoEventArgs.cs" />
     <Compile Include="Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\SayWordByPicture.Lib.csproj">
+    <ProjectReference Include="..\SayWordByPicture.Lib\SayWordByPicture.Lib.csproj">
       <Project>{9F403000-8E93-4D0E-883B-1F5FA9F68230}</Project>
       <Name>SayWordByPicture.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PhoneServices\PhoneServices.csproj">
+      <Project>{377E3E6C-7AAE-4BE4-A67F-4464E7FC6C36}</Project>
+      <Name>PhoneServices</Name>
     </ProjectReference>
     <ProjectReference Include="..\SayWordByPicture.Data\SayWordByPicture.Data.csproj">
       <Project>{BC8E6AF3-14AD-4F60-8174-14FBFF4237B1}</Project>
       <Name>SayWordByPicture.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SayWordByPicture.Media\SayWordByPicture.Media.csproj">
-      <Project>{539ED67F-50BF-49DC-A266-06E7DCF05BCC}</Project>
-      <Name>SayWordByPicture.Media</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SayWordByPicture.TextToSpeech\SayWordByPicture.TextToSpeech.csproj">
-      <Project>{A2894A95-C93E-4622-AAF2-4EDC57AB3641}</Project>
-      <Name>SayWordByPicture.TextToSpeech</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

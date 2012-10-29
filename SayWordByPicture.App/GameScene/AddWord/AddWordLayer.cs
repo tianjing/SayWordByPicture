@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework;
 using SayWordByPicture.Data;
-using Microsoft.Phone.Tasks;
 using System.IO;
 using SayWordByPicture.Lib.Core;
+using SayWordByPicture.App.Photo;
 namespace SayWordByPicture.App.GameScene.AddWord
 {
     internal sealed class AddWordLayer : CCLayer
@@ -43,13 +43,21 @@ namespace SayWordByPicture.App.GameScene.AddWord
         }
         private void ShowPicture()
         {
-            CCSprite sprite = CCSprite.spriteWithTexture(m_Picture);
-            sprite.position = new CCPoint(240, 590);
-            addChild(sprite, 0);
+            try
+            {
+                CCSprite sprite = CCSprite.spriteWithTexture(m_Picture);
+                sprite.position = new CCPoint(240, 590);
+                addChild(sprite, 0);
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
         }
 
         private void ShowName()
         {
+
             if (null != m_newChinese)
             {
                 try
@@ -57,10 +65,10 @@ namespace SayWordByPicture.App.GameScene.AddWord
                     m_ChineseLabel.setString(m_newChinese);
                     m_Word.ChineseName = m_newChinese;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     m_newChinese = m_Word.ChineseName;
-                    IAsyncResult ar = 
+                    IAsyncResult ar =
                     Guide.BeginShowMessageBox("提示", "您输入的文字不能识别！", new List<String> { "确定" }, 0, MessageBoxIcon.Alert, null, new Object());
                     Guide.EndShowMessageBox(ar);
                 }
@@ -72,10 +80,10 @@ namespace SayWordByPicture.App.GameScene.AddWord
                     m_EnglishLabel.setString(m_newEnglish);
                     m_Word.EnglishName = m_newEnglish;
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                     m_newEnglish=m_Word.EnglishName;
-                    IAsyncResult ar = 
+                    m_newEnglish = m_Word.EnglishName;
+                    IAsyncResult ar =
                     Guide.BeginShowMessageBox("提示", "您输入的文字不能识别！", new List<String> { "确定" }, 0, MessageBoxIcon.Alert, null, new Object());
                     Guide.EndShowMessageBox(ar);
                 }
@@ -111,18 +119,27 @@ namespace SayWordByPicture.App.GameScene.AddWord
         }
         private void AddImageClick(CCObject p_Sender)
         {
-            PhotoChooserTask photoChooserTask = new PhotoChooserTask();
-            photoChooserTask.Completed += SelectPictureComplete;
-            photoChooserTask.ShowCamera = true;
-            photoChooserTask.Show();
-
-        }
-        private void SelectPictureComplete(Object sender, PhotoResult e)
-        {
-            if (null == e.Error && e.TaskResult == TaskResult.OK)
+            try
             {
-                m_Picture = Media.PictureManager.GetCCTexture2D(e.ChosenPhoto, 220, 380, false);
-                m_Word.PictureFile = Path.GetFileName(e.OriginalFileName);
+                PhotoChooser photoChooser = new PhotoChooser();
+                photoChooser.Completed += SelectPictureComplete;
+                photoChooser.SelectPhoto();
+            }
+            catch (Exception e)
+            {
+                ExceptionHelper.ExceptionProcess(e);
+            }
+        }
+        private void SelectPictureComplete(Object sender, PhotoEventArgs e)
+        {
+            try
+            {
+                m_Picture = Media.PictureManager.GetCCTexture2D(e.PhotoSteam, 220, 380, false);
+                m_Word.PictureFile = Path.GetFileName(e.FileName);
+            }
+            catch (Exception ee)
+            {
+                ExceptionHelper.ExceptionProcess(ee);
             }
         }
         #endregion

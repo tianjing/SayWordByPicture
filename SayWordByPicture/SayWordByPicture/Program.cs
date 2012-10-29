@@ -1,8 +1,7 @@
 ﻿using System;
-
+using Microsoft.Xna.Framework;
 namespace SayWordByPicture
 {
-
     static class Program
     {
         /// <summary>
@@ -16,6 +15,5 @@ namespace SayWordByPicture
             }
         }
     }
-
 }
 

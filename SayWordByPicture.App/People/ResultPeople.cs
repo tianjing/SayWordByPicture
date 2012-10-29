@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using cocos2d;
 using Microsoft.Xna.Framework.Graphics;
-using SayWordByPicture.Lib.File;
 using Microsoft.Xna.Framework.Audio;
 using SayWordByPicture.App.Action;
 using SayWordByPicture.App.Core;
 using SayWordByPicture.App.Core.Interface;
+using PhoneServices;
 namespace SayWordByPicture.App.People
 {
     public class ResultPeople : CCSprite
@@ -81,7 +81,10 @@ namespace SayWordByPicture.App.People
             {
                 soundpath = FailSoundPath;
             }
-            Sound = SoundEffect.FromStream(FileLoader.ReadFile(true, soundpath));
+#if WINDOWS_PHONE
+            Sound = SoundEffect.FromStream(Content.Current.ReadFile(soundpath));
+#endif
+            //todo android
         }
 
         public void Play(Action<Object> p_action)
