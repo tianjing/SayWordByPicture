@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -77,7 +77,7 @@ namespace SayWordByPicture.Data
 
         }
         /// <summary>
-        /// ÃÌº”
+        /// Ê∑ªÂä†
         /// </summary>
         /// <param name="p_Word"></param>
         /// <returns></returns>
@@ -89,7 +89,7 @@ namespace SayWordByPicture.Data
             return comm.ExecuteNonQuery() > 0;
         }
         /// <summary>
-        /// …æ≥˝
+        /// Âà†Èô§
         /// </summary>
         /// <param name="p_Id"></param>
         /// <returns></returns>
@@ -110,7 +110,7 @@ namespace SayWordByPicture.Data
             #region Apple
             list.Add(new Word
             {
-                ChineseName = "∆ªπ˚",
+                ChineseName = "ËãπÊûú",
                 EnglishName = "Apple",
                 PictureFile = "Apple.jpg",
                 IsContent = true,
@@ -119,7 +119,7 @@ namespace SayWordByPicture.Data
             #region Banana
             list.Add(new Word
             {
-                ChineseName = "œ„Ω∂",
+                ChineseName = "È¶ôËïâ",
                 EnglishName = "Banana",
                 PictureFile = "Banana.jpg",
                 IsContent = true,
@@ -128,7 +128,7 @@ namespace SayWordByPicture.Data
             #region Cherry
             list.Add(new Word
             {
-                ChineseName = "”£Ã“",
+                ChineseName = "Ê®±Ê°É",
                 EnglishName = "Cherry",
                 PictureFile = "Cherry.jpg",
                 IsContent = true,
@@ -137,7 +137,7 @@ namespace SayWordByPicture.Data
             #region Orange
             list.Add(new Word
             {
-                ChineseName = "ÈŸ◊”",
+                ChineseName = "Ê©òÂ≠ê",
                 EnglishName = "Orange",
                 PictureFile = "Orange.jpg",
                 IsContent = true,
@@ -146,7 +146,7 @@ namespace SayWordByPicture.Data
             #region Coconut
             list.Add(new Word
             {
-                ChineseName = "“¨◊”",
+                ChineseName = "Ê§∞Â≠ê",
                 EnglishName = "Coconut",
                 PictureFile = "Coconut.jpg",
                 IsContent = true,
@@ -155,7 +155,7 @@ namespace SayWordByPicture.Data
             #region Blackberry
             list.Add(new Word
             {
-                ChineseName = "∫⁄›Æ",
+                ChineseName = "ÈªëËéì",
                 EnglishName = "Blackberry",
                 PictureFile = "Blackberry.jpg",
                 IsContent = true,
@@ -164,7 +164,7 @@ namespace SayWordByPicture.Data
             #region Grape
             list.Add(new Word
             {
-                ChineseName = "∆œÃ—",
+                ChineseName = "Ëë°ËêÑ",
                 EnglishName = "Grape",
                 PictureFile = "Grape.jpg",
                 IsContent = true,
@@ -173,7 +173,7 @@ namespace SayWordByPicture.Data
             #region Loguat
             list.Add(new Word
             {
-                ChineseName = "Ë¡ËÀ",
+                ChineseName = "ÊûáÊù∑",
                 EnglishName = "Loguat",
                 PictureFile = "Loguat.jpg",
                 IsContent = true,
@@ -182,7 +182,7 @@ namespace SayWordByPicture.Data
             #region Pear
             list.Add(new Word
             {
-                ChineseName = "¿Ê",
+                ChineseName = "Ê¢®",
                 EnglishName = "Pear",
                 PictureFile = "Pear.jpg",
                 IsContent = true,
@@ -191,7 +191,7 @@ namespace SayWordByPicture.Data
             #region Papaya
             list.Add(new Word
             {
-                ChineseName = "ƒæπœ",
+                ChineseName = "Êú®Áìú",
                 EnglishName = "Papaya",
                 PictureFile = "Papaya.jpg",
                 IsContent = true,
@@ -200,7 +200,7 @@ namespace SayWordByPicture.Data
             #region Pomegranate
             list.Add(new Word
             {
-                ChineseName = " Ø¡Ò",
+                ChineseName = "Áü≥Ê¶¥",
                 EnglishName = "Pomegranate",
                 PictureFile = "Pomegranate.jpg",
                 IsContent = true,
@@ -209,7 +209,7 @@ namespace SayWordByPicture.Data
             #region Watermelon
             list.Add(new Word
             {
-                ChineseName = "Œ˜πœ",
+                ChineseName = "Ë•øÁìú",
                 EnglishName = "Watermelon",
                 PictureFile = "Watermelon.jpg",
                 IsContent = true,
@@ -218,7 +218,7 @@ namespace SayWordByPicture.Data
             #region Pineapple
             list.Add(new Word
             {
-                ChineseName = "≤§¬‹",
+                ChineseName = "Ëè†Ëêù",
                 EnglishName = "Pineapple",
                 PictureFile = "Pineapple.jpg",
                 IsContent = true,
@@ -227,7 +227,7 @@ namespace SayWordByPicture.Data
             #region Litchi
             list.Add(new Word
             {
-                ChineseName = "¿Û÷¶",
+                ChineseName = "ËçîÊûù",
                 EnglishName = "Litchi",
                 PictureFile = "Litchi.jpg",
                 IsContent = true,
@@ -236,7 +236,7 @@ namespace SayWordByPicture.Data
             #region Potato
             list.Add(new Word
             {
-                ChineseName = "Õ¡∂π",
+                ChineseName = "ÂúüË±Ü",
                 EnglishName = "Potato",
                 PictureFile = "Potato.jpg",
                 IsContent = true,
@@ -245,7 +245,7 @@ namespace SayWordByPicture.Data
             #region Mango
             list.Add(new Word
             {
-                ChineseName = "√¢π˚",
+                ChineseName = "ËäíÊûú",
                 EnglishName = "Mango",
                 PictureFile = "Mango.jpg",
                 IsContent = true,

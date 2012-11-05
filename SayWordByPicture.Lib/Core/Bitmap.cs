@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,17 +7,17 @@ using System.IO;
 namespace SayWordByPicture.Lib.Core
 {
     /// <summary>
-    /// Í¼ÏñÀà
+    /// å›¾åƒç±»
     /// </summary>
     public class Bitmap : IDisposable
     {
         public Texture2D Texture { get; set; }
         /// <summary>
-        /// ¸ù¾İÍ¼Ïñ¸ñÊ½£¨SurfaceFormat£© ´´½¨Bitmap
+        /// æ ¹æ®å›¾åƒæ ¼å¼ï¼ˆSurfaceFormatï¼‰ åˆ›å»ºBitmap
         /// </summary>
-        /// <param name="width">¿í¶È</param>
-        /// <param name="height">¸ß¶È</param>
-        /// <param name="format">Í¼Ïñ¸ñÊ½</param>
+        /// <param name="width">å®½åº¦</param>
+        /// <param name="height">é«˜åº¦</param>
+        /// <param name="format">å›¾åƒæ ¼å¼</param>
         /// <returns></returns>
         public static Bitmap CreateBitmap(GraphicsDevice p_GraphicsDevice, int p_Width, int p_Height, SurfaceFormat format)
         {
@@ -27,9 +27,9 @@ namespace SayWordByPicture.Lib.Core
             };
         }
         /// <summary>
-        /// ¸ù¾İ×Ö½ÚÊı×é´´½¨Í¼Ïñ
+        /// æ ¹æ®å­—èŠ‚æ•°ç»„åˆ›å»ºå›¾åƒ
         /// </summary>
-        /// <param name="p_Datas">Í¼Æ¬×Ö½ÚÊı×é</param>
+        /// <param name="p_Datas">å›¾ç‰‡å­—èŠ‚æ•°ç»„</param>
         /// <returns></returns>
         public static Bitmap CreateBitmap(GraphicsDevice p_GraphicsDevice, byte[] p_Datas)
         {
@@ -45,9 +45,9 @@ namespace SayWordByPicture.Lib.Core
             return bitmap;
         }
         /// <summary>
-        /// ¸ù¾İÄÚ´æÁ÷´´½¨Í¼Ïñ
+        /// æ ¹æ®å†…å­˜æµåˆ›å»ºå›¾åƒ
         /// </summary>
-        /// <param name="p_MemoryStream">ÄÚ´æÁ÷</param>
+        /// <param name="p_MemoryStream">å†…å­˜æµ</param>
         /// <returns></returns>
         public static Bitmap CreateBitmap(GraphicsDevice p_GraphicsDevice, Stream p_Stream)
         {
@@ -62,14 +62,14 @@ namespace SayWordByPicture.Lib.Core
             return bitmap;
         }
         /// <summary>
-        /// Í¼Ïñ¿í¶È
+        /// å›¾åƒå®½åº¦
         /// </summary>
         public int Width
         {
             get { return (this.Texture != null) ? this.Texture.Width : 0; }
         }
         /// <summary>
-        /// Í¼Ïñ¸ß¶È
+        /// å›¾åƒé«˜åº¦
         /// </summary>
         public int Height
         {
@@ -77,7 +77,7 @@ namespace SayWordByPicture.Lib.Core
         }
 
         /// <summary>
-        /// Êä³öÍ¼Ïñµ½ÄÚ´æÁ÷
+        /// è¾“å‡ºå›¾åƒåˆ°å†…å­˜æµ
         /// </summary>
         /// <returns></returns>
         public MemoryStream ToMemoryStream()
@@ -85,7 +85,7 @@ namespace SayWordByPicture.Lib.Core
             return new MemoryStream(ToBytes());
         }
         /// <summary>
-        /// Êä³öÍ¼Ïñµ½×Ö½ÚÊı×é
+        /// è¾“å‡ºå›¾åƒåˆ°å­—èŠ‚æ•°ç»„
         /// </summary>
         /// <returns></returns>
         public byte[] ToBytes()
@@ -95,7 +95,7 @@ namespace SayWordByPicture.Lib.Core
             return array;
         }
         /// <summary>
-        /// ÊÍ·Å
+        /// é‡Šæ”¾
         /// </summary>
         public void Dispose()
         {

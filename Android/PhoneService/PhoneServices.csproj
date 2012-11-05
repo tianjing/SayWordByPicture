@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DAF1DEFE-9862-4D22-A769-5C42ACDBA2DF}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PhoneService</RootNamespace>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AssemblyName>PhoneServices</AssemblyName>
+    <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="MonoGame.Framework.Android, Version=2.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\Lib\MonoGame.Framework.Android.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="..\..\PhoneServices\Interface\IAppConfig.cs">
+      <Link>Interface\IAppConfig.cs</Link>
+    </Compile>
+    <Compile Include="..\..\PhoneServices\Interface\IContent.cs">
+      <Link>Interface\IContent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\PhoneServices\Interface\IMediaPlay.cs">
+      <Link>Interface\IMediaPlay.cs</Link>
+    </Compile>
+    <Compile Include="..\..\PhoneServices\Interface\INetworkManage.cs">
+      <Link>Interface\INetworkManage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\PhoneServices\Interface\IStorage.cs">
+      <Link>Interface\IStorage.cs</Link>
+    </Compile>
+    <Compile Include="..\..\PhoneServices\Interface\ITextToSpeech.cs">
+      <Link>Interface\ITextToSpeech.cs</Link>
+    </Compile>
+    <Compile Include="Android\AppConfig.cs" />
+    <Compile Include="Android\MediaPlay.cs" />
+    <Compile Include="Android\NetworkManage.cs" />
+    <Compile Include="Android\Storage.cs" />
+    <Compile Include="Android\Content.cs" />
+    <Compile Include="Android\TextToSpeech.cs" />
+  </ItemGroup>
+</Project>

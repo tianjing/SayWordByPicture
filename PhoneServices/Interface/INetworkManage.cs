@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,7 @@ namespace PhoneServices.Interface
     public interface INetworkManage
     {
         /// <summary>
-        /// is Connection network £¨Except gprs £©
+        /// is Connection network ï¼ˆExcept gprs ï¼‰
         /// </summary>
         bool IsConnection { get; }
     }

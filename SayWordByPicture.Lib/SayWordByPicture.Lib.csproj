@@ -71,6 +71,7 @@
     <Compile Include="Core\RandomHelper.cs" />
     <Compile Include="CusException\MessageException.cs" />
     <Compile Include="Display\ScreenHelper.cs" />
+    <Compile Include="Http\HttpCliet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -1,10 +1,11 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PhoneServices.Interface;
 using System.IO.IsolatedStorage;
 using System.IO;
+using System.Threading;
 namespace PhoneServices
 {
     public sealed class Storage : IStorage
@@ -38,18 +39,17 @@ namespace PhoneServices
 
         #region read
         /// <summary>
-        /// ¶ÁÈ¡ÓïÑÔÎÄ¼ş
+        /// è¯»å–è¯­è¨€æ–‡ä»¶
         /// </summary>
-        /// <param name="p_FileName">ÎÄ¼şÃû³Æ</param>
+        /// <param name="p_FilePath">æ–‡ä»¶åç§°</param>
         /// <returns></returns>
-        public  String ReadTextFile(String p_FileName)
+        public String ReadTextFile(String p_FilePath)
         {
-            String path = String.Empty;
-            if (ValidFilePath(p_FileName))
+            if (ValidFilePath(p_FilePath))
             {
                 using (StreamReader stream = new StreamReader
                                 (
-                                 StorageFileManage.OpenFile(path,
+                                 StorageFileManage.OpenFile(p_FilePath,
                                  FileMode.Open)
                                  )
                           )
@@ -60,9 +60,9 @@ namespace PhoneServices
             return String.Empty;
         }
         /// <summary>
-        /// ¶ÁÈ¡Í¼Æ¬ÄÚÈİ
+        /// è¯»å–å›¾ç‰‡å†…å®¹
         /// </summary>
-        /// <param name="p_FileName">ÎÄ¼şÃû³Æ</param>
+        /// <param name="p_FileName">æ–‡ä»¶åç§°</param>
         /// <returns></returns>
         public  Stream ReadFile(String p_FileName)
         {
@@ -74,9 +74,9 @@ namespace PhoneServices
             return null;
         }
         /// <summary>
-        /// ÑéÖ¤ÎÄ¼ş
+        /// éªŒè¯æ–‡ä»¶
         /// </summary>
-        /// <param name="p_FilePath">ÎÄ¼şÂ·¾¶</param>
+        /// <param name="p_FilePath">æ–‡ä»¶è·¯å¾„</param>
         /// <returns></returns>
         private  bool ValidFilePath(String p_FilePath)
         {
@@ -96,12 +96,13 @@ namespace PhoneServices
                 DeleteFile(p_FilePath);
             }
         }
+
         /// <summary>
-        /// ±£´æÎÄ¼ş
+        /// ä¿å­˜æ–‡ä»¶
         /// </summary>
-        /// <param name="p_DirectoryName">ÎÄ¼ş¼ĞÃû³Æ</param>
-        /// <param name="p_FileName">ÎÄ¼şÃû³Æ</param>
-        /// <param name="p_bytes">ÎÄ¼şÄÚÈİ</param>
+        /// <param name="p_DirectoryName">æ–‡ä»¶å¤¹åç§°</param>
+        /// <param name="p_FileName">æ–‡ä»¶åç§°</param>
+        /// <param name="p_bytes">æ–‡ä»¶å†…å®¹</param>
         /// <returns></returns>
         public bool CreateFile(String p_FilePath, byte[] p_bytes)
         {
@@ -122,11 +123,11 @@ namespace PhoneServices
             return false;
         }
         /// <summary>
-        /// ½«ÎÄ±¾ÄÚÈİ ´´½¨ÎÄ±¾±£´æ
+        /// å°†æ–‡æœ¬å†…å®¹ åˆ›å»ºæ–‡æœ¬ä¿å­˜
         /// </summary>
-        /// <param name="p_DirectoryName">ÎÄ¼ş¼ĞÃû³Æ</param>
-        /// <param name="p_FileName">ÎÄ¼şÃû³Æ</param>
-        /// <param name="p_Text">ÎÄ±¾ÄÚÈİ</param>
+        /// <param name="p_DirectoryName">æ–‡ä»¶å¤¹åç§°</param>
+        /// <param name="p_FileName">æ–‡ä»¶åç§°</param>
+        /// <param name="p_Text">æ–‡æœ¬å†…å®¹</param>
         /// <returns></returns>
         public  bool CreateTextFile(String p_DirectoryName, String p_FileName, String p_Text)
         {
@@ -142,9 +143,9 @@ namespace PhoneServices
             return false;
         }
         /// <summary>
-        /// ´´½¨Ä¿Â¼
+        /// åˆ›å»ºç›®å½•
         /// </summary>
-        /// <param name="p_Path">Ä¿Â¼È«Â·¾¶</param>
+        /// <param name="p_Path">ç›®å½•å…¨è·¯å¾„</param>
         public void CreateDirectory(String p_Path)
         {
             StorageFileManage.CreateDirectory(p_Path);
@@ -152,18 +153,18 @@ namespace PhoneServices
         #endregion
         #region valid
         /// <summary>
-        /// ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ
+        /// æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨
         /// </summary>
-        /// <param name="p_DirPath">ÎÄ¼ş¼ĞÂ·¾¶</param>
+        /// <param name="p_DirPath">æ–‡ä»¶å¤¹è·¯å¾„</param>
         /// <returns></returns>
         public bool DirectoryExists(String p_DirPath)
         {
             return StorageFileManage.DirectoryExists(p_DirPath);
         }
         /// <summary>
-        /// ÎÄ¼şÊÇ·ñ´æÔÚ
+        /// æ–‡ä»¶æ˜¯å¦å­˜åœ¨
         /// </summary>
-        /// <param name="p_FilePath">ÎÄ¼şÂ·¾¶</param>
+        /// <param name="p_FilePath">æ–‡ä»¶è·¯å¾„</param>
         /// <returns></returns>
         public bool FileExists(String p_FilePath)
         {

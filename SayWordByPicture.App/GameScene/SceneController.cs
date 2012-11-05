@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +18,7 @@ namespace SayWordByPicture.App.GameScene
     internal sealed class SceneController : CCScene
     {
         /// <summary>
-        ///  ¹¹Ôì
+        ///  æž„é€ 
         /// </summary>
         public SceneController()
         {

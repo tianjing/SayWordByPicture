@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework;
 namespace SayWordByPicture.App.GameScene.Examination
 {
     /// <summary>
-    /// ≥ˆÃ‚≥°æ∞
+    /// Âá∫È¢òÂú∫ÊôØ
     /// </summary>
     internal sealed class QuestionLayer : BaseLayer
     {
@@ -24,31 +24,18 @@ namespace SayWordByPicture.App.GameScene.Examination
             this.isTouchEnabled = true;
             BackGroundInit();
             QuestionInit();
-           // SpeakerLoad();
-
-            FloorLayer floor = new FloorLayer(m_Answers[AnswerNumber-1].StudyInfo);
-            addChild(floor);
         }
-        Speaker m_Speaker;
-        List<Selection> m_Answers;
-        //QuestionAction SayAction;
         /// <summary>
-        /// ±≥æ∞≥ı ºªØ
+        /// ËÉåÊôØÂàùÂßãÂåñ
         /// </summary>
         private void BackGroundInit()
         {
 
         }
 
-   
-        private void SpeakerLoad()
-        {
-            m_Speaker = new Speaker();
-            m_Speaker.position = new CCPoint(CCDirector.sharedDirector().getWinSize().width - (m_Speaker.contentSize.width / 2), m_Speaker.contentSize.height / 2);
-           // m_Speaker.SayAction = SayAction;
-            addChild(m_Speaker);
-        }
-        private Int32 m_StillWhile = 80;
+        List<Selection> m_Answers;
+        private FloorLayer m_Floor;
+        private Int32 m_StillWhile = 50;
         private void QuestionInit()
         {
             CCSize size = CCDirector.sharedDirector().getWinSize();
@@ -60,14 +47,14 @@ namespace SayWordByPicture.App.GameScene.Examination
             Int32 lineNum = Platform.QuestionNum / 2;
             Int32 vertical = Platform.QuestionNum / lineNum;
             CCSize oneSize = new CCSize((size.width - m_StillWhile * lineNum) / lineNum, (size.height - m_StillWhile * vertical) / vertical);
-            CCPoint curr = new CCPoint((m_StillWhile/2) + (oneSize.width / 2), size.height-( (m_StillWhile/2) + (oneSize.height / 2)));
+            CCPoint curr = new CCPoint((m_StillWhile/2) + (oneSize.width / 2), size.height-( (m_StillWhile/4) + (oneSize.height / 2)));
 
             for (var i = 0; i < list.Count; i++)
             {
                 if (i > 0 && (i % lineNum) == 0)
                 {
-                    curr.x = (m_StillWhile/2)+(oneSize.width / 2);
-                    curr.y -= (oneSize.height + m_StillWhile/2);
+                    curr.x = (m_StillWhile / 2) + (oneSize.width / 2);
+                    curr.y -= (oneSize.height + m_StillWhile/4);
                 }
 
                 Selection select = null;
@@ -76,16 +63,18 @@ namespace SayWordByPicture.App.GameScene.Examination
                 select.position = new CCPoint(curr.x, curr.y);
                 curr.x += oneSize.width + m_StillWhile;
 
-              //  if (i == AnswerNumber - 1)
-              //  {
-              //      SayAction = new QuestionAction(select);
-              //  }
-                //select.visible = true;
+                if (i == AnswerNumber - 1)
+                {
+                    m_Floor = new FloorLayer(select.StudyInfo);
+                }
+                select.visible = true;
                 this.addChild(select);
                 m_Answers.Add(select);
             }
-            //runAction(SayAction);
+            this.addChild(m_Floor);
         }
+
+
 
 
         private void GetAnswerNumber()
@@ -93,9 +82,25 @@ namespace SayWordByPicture.App.GameScene.Examination
             AnswerNumber = Lib.Core.RandomHelper.GetRandomNumber(1, Platform.QuestionNum);
         }
         /// <summary>
-        /// ¥∞∏œÓ
+        /// Á≠îÊ°àÈ°π
         /// </summary>
         public Int32 AnswerNumber { get; set; }
 
+        public override void ccTouchesEnded(List<CCTouch> touches, CCEvent event_)
+        {
+            base.ccTouchesEnded(touches, event_);
+            Int32 length = this.children.Count;
+            for (int i = 0; i < length; i++)
+            {
+                if (IsTouchNode(this.children[i], touches))
+                {
+                    ITouchProcess clicker = this.children[i] as ITouchProcess;
+                    if (null != clicker)
+                    {
+                        clicker.OnClick(this);
+                    }
+                }
+            }
+        }
     }
 }

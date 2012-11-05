@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,19 +8,19 @@ namespace SayWordByPicture.App.Action
 {
     public class PlaySoundAction:CCAction
     {
-        public PlaySoundAction(SoundEffect p_Sound)
+        public PlaySoundAction(String p_SoundPath)
         {
-            m_Sound = p_Sound;
+            m_SoundPath = p_SoundPath;
         }
-        SoundEffect m_Sound;
+        String m_SoundPath;
         public override void stop()
         {
             base.stop();
-            if (null != m_Sound)
+            if (!String.IsNullOrEmpty( m_SoundPath))
             {
                 try
                 {
-                    m_Sound.Play();
+                    Media.AudioManager.Play(m_SoundPath);
                 }
                 catch { }
             }

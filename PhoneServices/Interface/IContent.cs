@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +9,9 @@ namespace PhoneServices.Interface
     public interface IContent
     {
          /// <summary>
-        /// È¡Í¼ÎÄ¼şÄÚÈİ
+        /// å–å›¾æ–‡ä»¶å†…å®¹
         /// </summary>
-        /// <param name="p_FilePath">ÎÄ¼şÈ«Â·¾¶</param>
+        /// <param name="p_FilePath">æ–‡ä»¶å…¨è·¯å¾„</param>
         /// <returns></returns>
         Stream ReadFile(String p_FilePath);
     }

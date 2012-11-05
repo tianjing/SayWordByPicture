@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,7 +10,7 @@ using SayWordByPicture.App.Core.Interface;
 using Microsoft.Xna.Framework;
 namespace SayWordByPicture.App.GameScene.Examination
 {
-    public class FloorLayer : BaseLayer
+    public class FloorLayer : BaseLayer, ITouchProcess
     {
         private const Int32 m_Heigth = 46;
         private const Int32 m_StillWhile = 80;
@@ -41,6 +41,7 @@ namespace SayWordByPicture.App.GameScene.Examination
 
             m_Speaker.position = new CCPoint((m_Size.width / 2) + (m_Speaker.contentSize.width / 2) + m_StillWhile, (m_Speaker.contentSize.height / 2));
             addChild(m_Speaker);
+            
         }
         private void LoadWordText()
         {
@@ -61,6 +62,11 @@ namespace SayWordByPicture.App.GameScene.Examination
             sprite.Color = new ccColor3B(Color.White);
             sprite.position = new CCPoint((m_Size.width / 2) - (sprite.contentSize.width / 2) - m_StillWhile, (sprite.contentSize.height / 2));
             addChild(sprite);
+        }
+
+        public void OnClick(CCLayer p_Layer)
+        {
+            m_Speaker.OnClick(p_Layer);
         }
     }
 }

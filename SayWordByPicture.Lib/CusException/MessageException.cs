@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +6,7 @@ using System.Text;
 namespace SayWordByPicture.Lib.CusException
 {
     /// <summary>
-    /// ��Ϣ�쳣
+    /// 消息异常
     /// </summary>
     public class MessageException:Exception 
     {

@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,17 +25,21 @@ namespace SayWordByPicture.App.GameScene.Setting
 
         private void LoadMenu()
         {
+
+
+
             CreateQuestionNumItem();
+
         }
 
         private void CreateQuestionNumItem()
         {
             float y = 400;
 
-            SettingMenuHelper.AddTitleMenu(this, "∑¢“Ù", ref y);
-            SettingMenuHelper.AddSetMenu(this, GetLanguageString(), "image/Left", "image/Right", SettingLanguageCallback, SettingLanguageCallback, ref y);
-
-            SettingMenuHelper.AddTitleMenu(this, "¥∞∏—°œÓ ˝", ref y);
+            SettingMenuHelper.AddTitleMenu(this, "ÂèëÈü≥", ref y);
+            SettingMenuHelper.AddSetMenu(this, GetLanguageString(), "image/Left", "image/Right",SettingLanguageCallback,SettingLanguageCallback, ref y);
+            
+            SettingMenuHelper.AddTitleMenu(this, "Á≠îÊ°àÈÄâÈ°πÊï∞", ref y);
             SettingMenuHelper.AddSetMenu(this, Platform.QuestionNum.ToString(), "image/Left", "image/Right", ReduceQuestionNumCallback, AddQuestionNumCallback, ref y);
 
         }
@@ -44,15 +48,15 @@ namespace SayWordByPicture.App.GameScene.Setting
             String result = String.Empty;
             switch (Platform.QuestionLanguage)
             {
-                case Lib.Core.Language.Chinese: result = "÷–Œƒ"; break;
+                case Lib.Core.Language.Chinese: result = "‰∏≠Êñá"; break;
                 case Lib.Core.Language.Enlish:
-                default: result = "”¢Œƒ"; break;
+                default: result = "Ëã±Êñá"; break;
             }
             return result;
         }
         private void CreateQuestionLanguage(CCMenu p_Menu)
         {
-            CCLabelTTF label = CCLabelTTF.labelWithString("∑¢“Ù", "ChineseTitle", 28);
+            CCLabelTTF label = CCLabelTTF.labelWithString("ÂèëÈü≥", "ChineseTitle", 28);
             label.Color = new ccColor3B(Color.White);
             CCMenuItemLabel tab = CCMenuItemLabel.itemWithLabel(label);
         }
@@ -63,46 +67,25 @@ namespace SayWordByPicture.App.GameScene.Setting
         }
         public void SettingLanguageCallback(CCObject pSender)
         {
-            try
+            switch (Platform.QuestionLanguage)
             {
-                switch (Platform.QuestionLanguage)
-                {
-                    case Language.Enlish: Platform.QuestionLanguage = Language.Chinese; break;
-                    case Language.Chinese:
-                    default: Platform.QuestionLanguage = Language.Enlish; break;
-                }
-                SceneController.RunScene(EnumScene.Setting);
+                case Language.Enlish: Platform.QuestionLanguage = Language.Chinese; break;
+                case Language.Chinese:
+                default: Platform.QuestionLanguage = Language.Enlish; break;
             }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+            SceneController.RunScene(EnumScene.Setting);
         }
 
         public void AddQuestionNumCallback(CCObject pSender)
         {
-            try
-            {
-                Platform.QuestionNum += 2;
-                SceneController.RunScene(EnumScene.Setting);
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+            Platform.QuestionNum += 2;
+            SceneController.RunScene(EnumScene.Setting);
         }
         public void ReduceQuestionNumCallback(CCObject pSender)
         {
-            try
-            {
-                Platform.QuestionNum -= 2;
-                SceneController.RunScene(EnumScene.Setting);
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
-        }
+            Platform.QuestionNum -= 2;
+            SceneController.RunScene(EnumScene.Setting);
+        } 
 
     }
 }

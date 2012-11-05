@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +9,11 @@ namespace PhoneServices
 {
     public class AppConfig : IAppConfig
     {
-        static AppConfig()
+        private AppConfig()
         {
             AppSetting = IsolatedStorageSettings.ApplicationSettings;
         }
-        private AppConfig()
-        {
-        }
+
         static IAppConfig m_Current;
         public static IAppConfig Current 
         { 
@@ -40,7 +38,7 @@ namespace PhoneServices
            return  AppSetting.TryGetValue(p_Key,out p_Value);
         }
         /// <summary>
-        /// set app save value by key £¨can save data£©
+        /// set app save value by key ï¼ˆcan save dataï¼‰
         /// </summary>
         /// <param name="p_Key">key</param>
         /// <param name="p_Value">value</param>

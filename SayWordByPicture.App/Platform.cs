@@ -1,67 +1,69 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using SayWordByPicture.Lib.Core;
-using PhoneServices;
 
 namespace SayWordByPicture.App
 {
     public static class Platform
     {
+        static Platform()
+        {
+            AppSetting = PhoneServices.AppConfig.Current;
+        }
+        static PhoneServices.Interface.IAppConfig AppSetting{get;set;}
 
         /// <summary>
-        /// “ª¥Œ≥ˆÃ‚ ˝¡ø
+        /// ‰∏ÄÊ¨°Âá∫È¢òÊï∞Èáè
         /// </summary>
         public static Int32 QuestionNum
         {
             get
             {
-                Int32 num = 0;
                 Object obj;
-                if (! AppConfig.Current.TryGetValue("QuestionNum", out obj))
+                if (!AppSetting.TryGetValue("QuestionNum", out obj))
                 {
-                    num = 4;
-                    AppConfig.Current.SetValue("QuestionNum", num);
+                    Int32 num = 4;
+                    AppSetting.SetValue("QuestionNum", num);
+                    return num;
                 }
                 else
                 {
-                    num = (Int32)obj;
+                    return System.Convert.ToInt32(obj);
                 }
-                return num;
             }
             set 
             {
                 Int32 setvalue=value<=4?4:value;
                 setvalue = setvalue >= 6 ? 6 : setvalue;
-                AppConfig.Current.SetValue("QuestionNum", setvalue);
+                AppSetting.SetValue("QuestionNum", setvalue);
             }
         }
         /// <summary>
-        /// ≥ˆÃ‚ ±µƒ∑¢“Ù
+        /// Âá∫È¢òÊó∂ÁöÑÂèëÈü≥
         /// </summary>
         public static Language QuestionLanguage
         {
             get
             {
-                Language value;
                 Object obj;
-                if (!AppConfig.Current.TryGetValue("QuestionLanguage", out obj))
+                if (!AppSetting.TryGetValue("QuestionLanguage", out obj))
                 {
-                    value = Language.Enlish;
-                    AppConfig.Current.SetValue("QuestionLanguage", value);
+                    Language value = Language.Enlish;
+                    AppSetting.SetValue("QuestionLanguage", value);
+                    return value;
                 }
-                else
+                else 
                 {
-                    value = (Language)obj;
+                    return (Language)System.Convert.ToInt32(obj);
                 }
-                return value;
             }
             set 
             {
-                AppConfig.Current.SetValue("QuestionLanguage", value);
+                AppSetting.SetValue("QuestionLanguage", (Int32)value);
             }
         }
     }

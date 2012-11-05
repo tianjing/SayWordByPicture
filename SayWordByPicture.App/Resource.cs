@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +10,11 @@ namespace SayWordByPicture.App
     public static class Resource
     {
         /// <summary>
-        /// ±³¾°Í¼Æ¬
+        /// èƒŒæ™¯å›¾ç‰‡
         /// </summary>
         public static Bitmap BackGround { get; set; }
         /// <summary>
-        /// ×ÖÌå
+        /// å­—ä½“
         /// </summary>
         public static SpriteFont Font { get; set; }
     }

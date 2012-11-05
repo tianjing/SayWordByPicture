@@ -1,36 +1,39 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
+using System.Text;
+
 namespace SayWordByPicture.Lib.Core
 {
     public enum Language
     {
         /// <summary>
-        /// ÖÐÎÄ
+        /// ä¸­æ–‡
         /// </summary>
-        [Description("zh-cn")]
+        [Description("zh-chs")]
         Chinese,
         /// <summary>
-        /// Ó¢ÎÄ
+        /// è‹±æ–‡
         /// </summary>
-        
+        [Description("en")]
         Enlish,
     }
     public static class LanguageExt
     {
         public static String GetDescription(this Language p_Language)
         {
-            Type type = typeof(Language);
-            FieldInfo info = type.GetField(p_Language.ToString());  
-            DescriptionAttribute descriptionAttribute= info.GetCustomAttributes(typeof (DescriptionAttribute), true)[0] as DescriptionAttribute;  
-            if (descriptionAttribute != null)  
-                return descriptionAttribute.Description;  
-            else  
-                return type.ToString(); 
-
+            Type type = p_Language.GetType();
+            MemberInfo[] memInfo = type.GetMember(p_Language.ToString());
+            if (memInfo != null && memInfo.Length > 0)
+            {
+                object[] attrs = memInfo[0].GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
+                if (attrs != null && attrs.Length > 0)
+                    return ((DescriptionAttribute)attrs[0]).Description;
+            }
+            return String.Empty;
         }
     }
+
 }

@@ -1,4 +1,4 @@
-using System;
+锘縰sing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +23,9 @@ namespace SayWordByPicture.App
         }
         private static void Message(MessageException p_Message)
         {
-           IAsyncResult ar=  Guide.BeginShowMessageBox("提示"
+           IAsyncResult ar=  Guide.BeginShowMessageBox("鎻愮ず"
                                                         , p_Message.Message
-                                                        , new List<String>() {"确定"}
+                                                        , new List<String>() {"纭畾"}
                                                         ,0
                                                         , Microsoft.Xna.Framework.GamerServices.MessageBoxIcon.Alert
                                                         ,null,new Object());
@@ -34,9 +34,9 @@ namespace SayWordByPicture.App
         }
         private static void ExMessage(Exception p_Exception)
         {
-            IAsyncResult ar = Guide.BeginShowMessageBox("提示"
+            IAsyncResult ar = Guide.BeginShowMessageBox("鎻愮ず"
                                                          , p_Exception.Message
-                                                         , new List<String>() { "确定" }
+                                                         , new List<String>() { "纭畾" }
                                                          , 0
                                                          , Microsoft.Xna.Framework.GamerServices.MessageBoxIcon.Alert
                                                          , null, new Object());

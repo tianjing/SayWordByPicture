@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +6,20 @@ using SayWordByPicture.Lib.Core;
 using System.Xml.Linq;
 using System.IO;
 using Microsoft.Xna.Framework;
-using SayWordByPicture.Lib.File;
 using System.Xml;
 using Microsoft.Xna.Framework.Audio;
 namespace SayWordByPicture.Data
 {
     /// <summary>
-    /// Ñ§Ï°ĞÅÏ¢ÊµÌå
+    /// å­¦ä¹ ä¿¡æ¯å®ä½“
     /// </summary>
     public class StudyInfo : IDisposable
     {
         /// <summary>
-        /// ¹¹Ôì
+        /// æ„é€ 
         /// </summary>
-        /// <param name="p_XmlFilePath">xmlÊı¾İÎÄ¼ş</param>
-        ///  <param name="p_IsContent">ÊÇ·ñÊÇÏîÄ¿ÄÚÈİÊı¾İ</param>
+        /// <param name="p_XmlFilePath">xmlæ•°æ®æ–‡ä»¶</param>
+        ///  <param name="p_IsContent">æ˜¯å¦æ˜¯é¡¹ç›®å†…å®¹æ•°æ®</param>
         public StudyInfo(String p_FilePath, bool p_IsContent)
         {
             Sounds = new Dictionary<Language, SoundEffect>();
@@ -30,11 +29,11 @@ namespace SayWordByPicture.Data
             LoadResources();
         }
         /// <summary>
-        /// ÓïÑÔĞÅÏ¢
+        /// è¯­è¨€ä¿¡æ¯
         /// </summary>
         Dictionary<Language, LanguageInfo> m_LangInfo;
         /// <summary>
-        /// ÓĞĞ§ĞÅÏ¢
+        /// æœ‰æ•ˆä¿¡æ¯
         /// </summary>
         public bool IsValid { get { return m_LangInfo.Count >= 2 && Picture.Count>0; } }
         /// <summary>
@@ -42,27 +41,27 @@ namespace SayWordByPicture.Data
         /// </summary>
         public Dictionary<Language, SoundEffect> Sounds { get; set; }
         /// <summary>
-        /// ÊÇ·ñÊÇ³ÌĞòÄÚÈİÊı¾İ
+        /// æ˜¯å¦æ˜¯ç¨‹åºå†…å®¹æ•°æ®
         /// </summary>
         public bool IsContentRes { get; private set; }
         /// <summary>
-        /// Í¼Æ¬Á÷
+        /// å›¾ç‰‡æµ
         /// </summary>
         public ByteBuffe Picture { get; private set; }
         /// <summary>
-        /// xmlÂ·¾¶
+        /// xmlè·¯å¾„
         /// </summary>
         public String XmlPath { get; private set; }
         /// <summary>
         /// Get LanguageInfo by Language enum
         /// </summary>
-        /// <param name="p_Language">Index£ºLanguage enum</param>
+        /// <param name="p_Language">Indexï¼šLanguage enum</param>
         /// <returns></returns>
         public LanguageInfo this[Language p_Language] { get { return m_LangInfo[p_Language]; } }
         
         #region load
         /// <summary>
-        /// Load info ¡¢picture¡¢sound
+        /// Load info ã€pictureã€sound
         /// </summary>
         private void LoadResources()
         {
@@ -80,12 +79,11 @@ namespace SayWordByPicture.Data
             }
         }
         /// <summary>
-        /// ¼ÓÔØÒôÆµÊı¾İ
+        /// åŠ è½½éŸ³é¢‘æ•°æ®
         /// </summary>
         /// <returns></returns>
         private void LoadSoud()
         {
-#if WINPHONE
             foreach (var key in m_LangInfo)
             {
                 Sounds.Add(key.Key,
@@ -93,17 +91,15 @@ namespace SayWordByPicture.Data
                     );
 
             }
-#endif
-            //TODO android
         }
         #endregion
 
         #region static
         /// <summary>
-        /// ¼ÓÔØxml
+        /// åŠ è½½xml
         /// </summary>
-        /// <param name="p_XmlFilePath">ÎÄ¼şÂ·¾¶</param>
-        /// <param name="p_IsContent">ÊÇ·ñÊÇÄÚÈİÊı¾İ</param>
+        /// <param name="p_XmlFilePath">æ–‡ä»¶è·¯å¾„</param>
+        /// <param name="p_IsContent">æ˜¯å¦æ˜¯å†…å®¹æ•°æ®</param>
         /// <returns></returns>
         private static XDocument LoadXml(String p_XmlFilePath, bool p_IsContent)
         {
@@ -133,7 +129,7 @@ namespace SayWordByPicture.Data
             return new ByteBuffe();
         }
         /// <summary>
-        /// ÔØÈëxml Êı¾İ
+        /// è½½å…¥xml æ•°æ®
         /// </summary>
         /// <param name="p_Xml">xml</param>
         /// <returns></returns>

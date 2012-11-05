@@ -1,4 +1,4 @@
-using System;
+锘縰sing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,20 +8,20 @@ using SayWordByPicture.Lib.Core;
 namespace SayWordByPicture.Data
 {
     /// <summary>
-    /// 语言信息
+    /// 璇█淇℃伅
     /// </summary>
     public class LanguageInfo:IDisposable
     {
         /// <summary>
-        /// 名称
+        /// 鍚嶇О
         /// </summary>
         public String Name { get; set; }
         /// <summary>
-        /// 名称
+        /// 鍚嶇О
         /// </summary>
         public String Text { get; set; }
         /// <summary>
-        /// 声音文件
+        /// 澹伴煶鏂囦欢
         /// </summary>
         public ByteBuffe Voice { get; set; }
         /// <summary>

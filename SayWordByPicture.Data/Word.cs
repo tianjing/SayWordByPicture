@@ -1,7 +1,8 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 
@@ -16,23 +17,23 @@ namespace SayWordByPicture.Data
         public const String PicturePath = "Shared/Images/";
         public const String AudioPath = "Shared/Audio/";
         /// <summary>
-        /// Ö÷¼ü
+        /// ä¸»é”®
         /// </summary>
         public Int32 Id { get; set; }
         /// <summary>
-        /// ÖĞÎÄÃû³Æ
+        /// ä¸­æ–‡åç§°
         /// </summary>
         public String ChineseName { get; set; }
         /// <summary>
-        /// Ó¢ÎÄÃû³Æ
+        /// è‹±æ–‡åç§°
         /// </summary>
         public String EnglishName { get; set; }
         /// <summary>
-        /// Í¼Æ¬ÎÄ¼şÃû³Æ
+        /// å›¾ç‰‡æ–‡ä»¶åç§°
         /// </summary>
         public String PictureFile { get; set; }
         /// <summary>
-        /// Í¼Æ¬ÎÄ¼şÂ·¾¶
+        /// å›¾ç‰‡æ–‡ä»¶è·¯å¾„
         /// </summary>
         public String PictureFilePath
         {
@@ -46,23 +47,23 @@ namespace SayWordByPicture.Data
             }
         }
         /// <summary>
-        /// µ¥´ÊÀàĞÍ Èç1£ºË®¹û£¬2Êß²Ë
+        /// å•è¯ç±»å‹ å¦‚1ï¼šæ°´æœï¼Œ2è”¬èœ
         /// </summary>
         public Int32 WordType { get; set; }
         /// <summary>
-        /// ÊÇ·ñÊÇÄÚÖÃÊı¾İ
+        /// æ˜¯å¦æ˜¯å†…ç½®æ•°æ®
         /// </summary>
         public bool IsContent { get; set; }
         /// <summary>
-        /// Ó¢ÓïÒôÆµÎÄ¼ş
+        /// è‹±è¯­éŸ³é¢‘æ–‡ä»¶
         /// </summary>
         public String EnglishAudioFilePath { get { return AudioPath + EnglishName + ".wav"; } }
         /// <summary>
-        /// ÖĞÎÄÒôÆµÎÄ¼ş
+        /// ä¸­æ–‡éŸ³é¢‘æ–‡ä»¶
         /// </summary>
         public String ChineseAudioFilePath { get { return AudioPath + ChineseName + ".wav"; } }
         /// <summary>
-        /// Ó¢ÓïÒôÆµ ÊÇ·ñ´æÔÚ
+        /// è‹±è¯­éŸ³é¢‘ æ˜¯å¦å­˜åœ¨
         /// </summary>
         public bool HasEnglishAudio
         {
@@ -70,40 +71,37 @@ namespace SayWordByPicture.Data
             { return PhoneServices.Storage.Current.FileExists(EnglishAudioFilePath); }
         }
         /// <summary>
-        /// ÖĞÎÄÒôÆµ ÊÇ·ñ´æÔÚ
+        /// ä¸­æ–‡éŸ³é¢‘ æ˜¯å¦å­˜åœ¨
         /// </summary>
         public bool HasChineseAudio { get { return PhoneServices.Storage.Current.FileExists(ChineseAudioFilePath); } }
         /// <summary>
-        /// ²¥·ÅÖĞÎÄ
+        /// æ’­æ”¾ä¸­æ–‡
         /// </summary>
         public void PlayChinese()
        {
-           if (HasChineseAudio) {
 #if WINPHONE
+           if (HasChineseAudio) {
                SoundEffect sound = SoundEffect.FromStream(FileLoader.ReadFile(false, ChineseAudioFilePath));
                SoundEffectInstance player = sound.CreateInstance();
                player.Volume = 1;
                player.Play();
+           }
 #endif
-               //TODO android
-               }
        }
         /// <summary>
-        /// ²¥·ÅÓ¢ÎÄ
+        /// æ’­æ”¾è‹±æ–‡
         /// </summary>
         public void PlayEnglish()
         {
+#if WINPHONE
             if (HasEnglishAudio)
             {
-#if WINPHONE
                 SoundEffect sound = SoundEffect.FromStream(FileLoader.ReadFile(false,EnglishAudioFilePath));
                 SoundEffectInstance player = sound.CreateInstance();
                 player.Volume = 1;
                 player.Play();
-#endif
-                //TODO android
             }
-
+#endif
         }
     }
 }

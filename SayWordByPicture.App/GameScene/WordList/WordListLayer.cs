@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -56,14 +56,26 @@ namespace SayWordByPicture.App.GameScene.WordManage
         {
             m_y -= 10;
             //Picture
-            CCSprite spritepic = CCSprite.spriteWithTexture(Media.PictureManager.GetCCTexture2D(p_Word, PictureWidth, PictureHeight, false));
+            CCTexture2D text2d = Media.PictureManager.GetCCTexture2D(p_Word);
+            CCSprite spritepic = CCSprite.spriteWithTexture(text2d);
+            if (PictureWidth < text2d.ContentSizeInPixels.width)
+            {
+                spritepic.scaleX = PictureWidth / text2d.ContentSizeInPixels.width;
+            }
+            if (PictureHeight < text2d.ContentSizeInPixels.height)
+            {
+                spritepic.scaleY = PictureHeight / text2d.ContentSizeInPixels.height;
+            }
+            spritepic.contentSize.width=PictureWidth;
+            spritepic.contentSize.height=PictureHeight;
+
             //word name
             CCLabelTTF chineseText = CCLabelTTF.labelWithString(p_Word.ChineseName, "ChineseContent", 28);
             CCMenuItemLabel chineseLabel = CCMenuItemLabel.itemWithLabel(chineseText);
             CCLabelTTF englishText = CCLabelTTF.labelWithString(p_Word.EnglishName, "EnglishContent", 28);
             CCMenuItemLabel englishLabel = CCMenuItemLabel.itemWithLabel(englishText);
             //del button
-            CCLabelTTF delText = CCLabelTTF.labelWithString("ɾ��", "ChineseContent", 28);
+            CCLabelTTF delText = CCLabelTTF.labelWithString("删除", "ChineseContent", 28);
             CCMenuItemLabel delbutton = CCMenuItemLabel.itemWithLabel(delText, this, this.DeleteClick);
             delbutton.userData = p_Word;
             CCMenu menu = CCMenu.menuWithItems(delbutton);
@@ -95,23 +107,16 @@ namespace SayWordByPicture.App.GameScene.WordManage
         /// </summary>
         public void DeleteClick(CCObject pSender)
         {
-            try
+            CCMenuItemLabel label = pSender as CCMenuItemLabel;
+            if (null != label && null != label.userData)
             {
-                CCMenuItemLabel label = pSender as CCMenuItemLabel;
-                if (null != label && null != label.userData)
+                Word word = label.userData as Word;
+                if (DataBaseManager.Delete(word.Id))
                 {
-                    Word word = label.userData as Word;
-                    if (DataBaseManager.Delete(word.Id))
-                    {
-                        DataManager.RefreshWords();
-                        WordListScene wms = new WordListScene();
-                        wms.Run(this.position);
-                    }
+                    DataManager.RefreshWords();
+                    WordListScene wms = new WordListScene();
+                    wms.Run(this.position);
                 }
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
             }
         }
         private void GetTotalHeight()
@@ -124,12 +129,14 @@ namespace SayWordByPicture.App.GameScene.WordManage
         public override void ccTouchesBegan(List<CCTouch> pTouches, CCEvent pEvent)
         {
             CCTouch touch = pTouches.FirstOrDefault();
+
             m_tBeginPos = touch.locationInView(touch.view());
             m_tBeginPos = CCDirector.sharedDirector().convertToGL(m_tBeginPos);
         }
         public override void ccTouchesMoved(List<CCTouch> pTouches, CCEvent pEvent)
         {
             CCTouch touch = pTouches.FirstOrDefault();
+
             CCPoint touchLocation = touch.locationInView(touch.view());
             touchLocation = CCDirector.sharedDirector().convertToGL(touchLocation);
             float nMoveY = touchLocation.y - m_tBeginPos.y;

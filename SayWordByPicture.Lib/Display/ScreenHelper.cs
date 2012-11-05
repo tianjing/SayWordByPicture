@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,16 +9,16 @@ using cocos2d;
 namespace SayWordByPicture.Lib.Display
 {
     /// <summary>
-    /// ÆÁÄ»°ïÖúÀà
+    /// å±å¹•å¸®åŠ©ç±»
     /// </summary>
     public class ScreenHelper
     {
         /// <summary>
-        /// »ñÈ¡¾ù·ÖÆÁÄ»µÄ³ß´ç Ä¬ÈÏÆÁÄ»¿í800 ¸ß480
+        /// è·å–å‡åˆ†å±å¹•çš„å°ºå¯¸ é»˜è®¤å±å¹•å®½800 é«˜480
         /// </summary>
         /// <param name="p_Width">800</param>
         /// <param name="p_Height">480</param>
-        /// <param name="p_AverageNumber">¾ù·Ö</param>
+        /// <param name="p_AverageNumber">å‡åˆ†</param>
         /// <returns></returns>
         public static CCSize MathSize(Int32 p_Width, Int32 p_Height, Int32 p_AverageNumber,Int32 p_While)
         {
@@ -38,28 +38,28 @@ namespace SayWordByPicture.Lib.Display
             return size;
         }
         /// <summary>
-        /// »ñÈ¡¾ù·ÖÆÁÄ»µÄ¾ØĞÎ Ä¬ÈÏÆÁÄ»¿í800 ¸ß480
+        /// è·å–å‡åˆ†å±å¹•çš„çŸ©å½¢ é»˜è®¤å±å¹•å®½800 é«˜480
         /// </summary>
         /// <param name="p_Width">800</param>
         /// <param name="p_Height">480</param>
-        /// <param name="p_AverageNumber">¾ù·Ö</param>
+        /// <param name="p_AverageNumber">å‡åˆ†</param>
         /// <returns></returns>
         public static List<Rectangle> GetAverageRectangle(Int32 p_Width, Int32 p_Height, Int32 p_AverageNumber)
         {
             List<Rectangle> list = new List<Rectangle>();
             if (p_Width < 1 || p_Height < 1)
             {
-                throw new MessageException(String.Format("ÆÁÄ»²ÎÊıÌ«Ğ¡£¬Çë¼ì²é ¿í£º{0},¸ß£º{1}", p_Width, p_Height));
+                throw new MessageException(String.Format("å±å¹•å‚æ•°å¤ªå°ï¼Œè¯·æ£€æŸ¥ å®½ï¼š{0},é«˜ï¼š{1}", p_Width, p_Height));
             }
 
             if (1 > p_AverageNumber || p_AverageNumber > 9)
             {
-                throw new MessageException(String.Format("¾ù·ÖÊıÖ»Ö§³Öµ½2,4,6,8"));
+                throw new MessageException(String.Format("å‡åˆ†æ•°åªæ”¯æŒåˆ°2,4,6,8"));
             }
 
             if ((p_AverageNumber % 2) != 0)
             {
-                throw new MessageException(String.Format("¾ù·ÖÊı²»ÄÜÎªµ¥Êı"));
+                throw new MessageException(String.Format("å‡åˆ†æ•°ä¸èƒ½ä¸ºå•æ•°"));
             }
 
             Int32 width = p_Width / (p_AverageNumber / 2);

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +27,7 @@ namespace SayWordByPicture.Media
                     {
                         if (!Lib.Network.NetworkManage.IsConnection)
                         {
-                            throw new MessageException("ÎÞÍøÂç");
+                            throw new MessageException("æ— ç½‘ç»œ");
                         }
                         TextToSpeech.TextToSpeech down = new TextToSpeech.TextToSpeech();
                         down.GetSoud(Language.Chinese, p_Word);
@@ -43,7 +43,7 @@ namespace SayWordByPicture.Media
                     {
                         if (!Lib.Network.NetworkManage.IsConnection)
                         {
-                            throw new MessageException("ÎÞÍøÂç");
+                            throw new MessageException("æ— ç½‘ç»œ");
                         }
                         TextToSpeech.TextToSpeech down = new TextToSpeech.TextToSpeech();
                         down.GetSoud(Language.Enlish, p_Word);

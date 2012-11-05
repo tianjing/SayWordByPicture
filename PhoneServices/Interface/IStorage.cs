@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,22 +9,22 @@ namespace PhoneServices.Interface
     public interface IStorage
     {
                 /// <summary>
-        /// »ñÈ¡ËùÓĞÄ¿Â¼
+        /// è·å–æ‰€æœ‰ç›®å½•
         /// </summary>
         /// <returns></returns>
         String[] GetDirectorys(string p_SearchPattern);
 
         #region read
         /// <summary>
-        /// ¶ÁÈ¡ÓïÑÔÎÄ¼ş
+        /// è¯»å–è¯­è¨€æ–‡ä»¶
         /// </summary>
-        /// <param name="p_FileName">ÎÄ¼şÃû³Æ</param>
+        /// <param name="p_FileName">æ–‡ä»¶åç§°</param>
         /// <returns></returns>
         String ReadTextFile(String p_FileName);
         /// <summary>
-        /// ¶ÁÈ¡Í¼Æ¬ÄÚÈİ
+        /// è¯»å–å›¾ç‰‡å†…å®¹
         /// </summary>
-        /// <param name="p_FileName">ÎÄ¼şÃû³Æ</param>
+        /// <param name="p_FileName">æ–‡ä»¶åç§°</param>
         /// <returns></returns>
         Stream ReadFile(String p_FileName);
 
@@ -37,38 +37,38 @@ namespace PhoneServices.Interface
         /// <param name="p_FilePath">file path</param>
         void DeleteFile(String p_FilePath);
         /// <summary>
-        /// ±£´æÎÄ¼ş
+        /// ä¿å­˜æ–‡ä»¶
         /// </summary>
-        /// <param name="p_DirectoryName">ÎÄ¼ş¼ĞÃû³Æ</param>
-        /// <param name="p_FileName">ÎÄ¼şÃû³Æ</param>
-        /// <param name="p_bytes">ÎÄ¼şÄÚÈİ</param>
+        /// <param name="p_DirectoryName">æ–‡ä»¶å¤¹åç§°</param>
+        /// <param name="p_FileName">æ–‡ä»¶åç§°</param>
+        /// <param name="p_bytes">æ–‡ä»¶å†…å®¹</param>
         /// <returns></returns>
         bool CreateFile(String p_FilePath, byte[] p_bytes);
         /// <summary>
-        /// ½«ÎÄ±¾ÄÚÈİ ´´½¨ÎÄ±¾±£´æ
+        /// å°†æ–‡æœ¬å†…å®¹ åˆ›å»ºæ–‡æœ¬ä¿å­˜
         /// </summary>
-        /// <param name="p_DirectoryName">ÎÄ¼ş¼ĞÃû³Æ</param>
-        /// <param name="p_FileName">ÎÄ¼şÃû³Æ</param>
-        /// <param name="p_Text">ÎÄ±¾ÄÚÈİ</param>
+        /// <param name="p_DirectoryName">æ–‡ä»¶å¤¹åç§°</param>
+        /// <param name="p_FileName">æ–‡ä»¶åç§°</param>
+        /// <param name="p_Text">æ–‡æœ¬å†…å®¹</param>
         /// <returns></returns>
         bool CreateTextFile(String p_DirectoryName, String p_FileName, String p_Text);
         /// <summary>
-        /// ´´½¨Ä¿Â¼
+        /// åˆ›å»ºç›®å½•
         /// </summary>
-        /// <param name="p_Path">Ä¿Â¼È«Â·¾¶</param>
+        /// <param name="p_Path">ç›®å½•å…¨è·¯å¾„</param>
         void CreateDirectory(String p_Path);
         #endregion
         #region valid
         /// <summary>
-        /// ÎÄ¼ş¼ĞÊÇ·ñ´æÔÚ
+        /// æ–‡ä»¶å¤¹æ˜¯å¦å­˜åœ¨
         /// </summary>
-        /// <param name="p_DirPath">ÎÄ¼ş¼ĞÂ·¾¶</param>
+        /// <param name="p_DirPath">æ–‡ä»¶å¤¹è·¯å¾„</param>
         /// <returns></returns>
         bool DirectoryExists(String p_DirPath);
         /// <summary>
-        /// ÎÄ¼şÊÇ·ñ´æÔÚ
+        /// æ–‡ä»¶æ˜¯å¦å­˜åœ¨
         /// </summary>
-        /// <param name="p_FilePath">ÎÄ¼şÂ·¾¶</param>
+        /// <param name="p_FilePath">æ–‡ä»¶è·¯å¾„</param>
         /// <returns></returns>
         bool FileExists(String p_FilePath);
         #endregion

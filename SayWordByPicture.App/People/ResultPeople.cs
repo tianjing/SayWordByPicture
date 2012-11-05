@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Audio;
 using SayWordByPicture.App.Action;
 using SayWordByPicture.App.Core;
 using SayWordByPicture.App.Core.Interface;
-using PhoneServices;
 namespace SayWordByPicture.App.People
 {
     public class ResultPeople : CCSprite
@@ -25,10 +24,10 @@ namespace SayWordByPicture.App.People
 
 
         private CCRepeat action;
-        SoundEffect Sound { get; set; }
+        String m_SoundPath { get; set; }
         CCTexture2D Picture { get; set; }
         /// <summary>
-        /// ¹¹Ôì
+        /// æž„é€ 
         /// </summary>
         /// <param name="p_IsTure"></param>
         public ResultPeople(bool p_IsTure)
@@ -41,7 +40,7 @@ namespace SayWordByPicture.App.People
 
 
         /// <summary>
-        /// ¼ÓÔØÍ¼Æ¬
+        /// åŠ è½½å›¾ç‰‡
         /// </summary>
         private void LoadPicture()
         {
@@ -68,7 +67,7 @@ namespace SayWordByPicture.App.People
             action = CCRepeat.actionWithAction(anima.reverse(), 3);
         }
         /// <summary>
-        /// ¼ÓÔØÒôÆµ
+        /// åŠ è½½éŸ³é¢‘
         /// </summary>
         private void LoadSound()
         {
@@ -81,16 +80,13 @@ namespace SayWordByPicture.App.People
             {
                 soundpath = FailSoundPath;
             }
-#if WINDOWS_PHONE
-            Sound = SoundEffect.FromStream(Content.Current.ReadFile(soundpath));
-#endif
-            //todo android
+            m_SoundPath = soundpath;
         }
 
         public void Play(Action<Object> p_action)
         {
 
-            runAction(new PlaySoundAction(Sound));
+            runAction(new PlaySoundAction(m_SoundPath));
             runAction(action);
             
             ActionHelper.AsyncActionCallBack(action, (sender, e) => 

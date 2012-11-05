@@ -1,5 +1,6 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -8,12 +9,12 @@ namespace PhoneServices.Interface
     public interface ITextToSpeech
     {
         /// <summary>
-        /// »ñÈ¡ÒôÆµÎÄ¼ş
+        /// è·å–éŸ³é¢‘æ–‡ä»¶
         /// </summary>
-        /// <param name="p_Language">ÓïÑÔ</param>
-        /// <param name="p_Text">ÎÄ×ÖÄÚÈİ</param>
-        /// <param name="p_FilePath">±£´æÒôÆµÎÄ¼şÂ·¾¶</param>
-        /// <param name="p_CallBack">ÏÂÔØÍê³ÉºóÖ´ĞĞº¯Êı</param>
-        void GetSound(string p_Language, string p_Text, Action<object> p_CallBack);
+        /// <param name="p_Language">è¯­è¨€</param>
+        /// <param name="p_Text">æ–‡å­—å†…å®¹</param>
+        /// <param name="p_FilePath">ä¿å­˜éŸ³é¢‘æ–‡ä»¶è·¯å¾„</param>
+        /// <param name="p_CallBack">ä¸‹è½½å®Œæˆåæ‰§è¡Œå‡½æ•°</param>
+        void GetSound(string p_Language, string p_Text,Action<Stream> p_CallBack);
     }
 }

@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,15 +23,15 @@ namespace SayWordByPicture.App.GameScene.Start
         }
 
         /// <summary>
-        /// ≤Àµ•≥ı ºªØ
+        /// ËèúÂçïÂàùÂßãÂåñ
         /// </summary>
         private void MenuInit()
         {
-            CCLabelTTF startlabel = CCLabelTTF.labelWithString("ø™ º", "ChineseTitle", 28);
-            CCLabelTTF settinglabel = CCLabelTTF.labelWithString("—°œÓ", "ChineseTitle", 28);
-            CCLabelTTF listwordlabel = CCLabelTTF.labelWithString("¥ ø‚¡–±Ì", "ChineseTitle", 28);
-            CCLabelTTF addwordlabel = CCLabelTTF.labelWithString("ÃÌº”¥ ", "ChineseTitle", 28);
-            CCLabelTTF endlabel = CCLabelTTF.labelWithString("Ω· ¯", "ChineseTitle", 28);
+            CCLabelTTF startlabel = CCLabelTTF.labelWithString("ÂºÄÂßã", "ChineseTitle", 28);
+            CCLabelTTF settinglabel = CCLabelTTF.labelWithString("ÈÄâÈ°π", "ChineseTitle", 28);
+            CCLabelTTF listwordlabel = CCLabelTTF.labelWithString("ËØçÂ∫ìÂàóË°®", "ChineseTitle", 28);
+            CCLabelTTF addwordlabel = CCLabelTTF.labelWithString("Ê∑ªÂä†ËØç", "ChineseTitle", 28);
+            CCLabelTTF endlabel = CCLabelTTF.labelWithString("ÁªìÊùü", "ChineseTitle", 28);
 
             CCMenuItemLabel startbutton = CCMenuItemLabel.itemWithLabel(startlabel, this, this.StartCallback);
             CCMenuItemLabel settingbutton = CCMenuItemLabel.itemWithLabel(settinglabel, this, this.SettingCallback);
@@ -47,11 +47,11 @@ namespace SayWordByPicture.App.GameScene.Start
 
             CCMenu menu = CCMenu.menuWithItems(startbutton, settingbutton, managebutton, addwordbutton, endbutton);
 
-            menu.alignItemsInColumns(1, 1, 1, 1, 1);
+            menu.alignItemsInColumns(1, 1, 1, 1,1);
             addChild(menu, 1);
         }
         /// <summary>
-        /// ±≥æ∞≥ı ºªØ
+        /// ËÉåÊôØÂàùÂßãÂåñ
         /// </summary>
         private void BackGroundInit(CCSize p_Size)
         {
@@ -67,69 +67,34 @@ namespace SayWordByPicture.App.GameScene.Start
 
 
         /// <summary>
-        /// ø™ º”Œœ∑ ¬º˛
+        /// ÂºÄÂßãÊ∏∏Êàè‰∫ã‰ª∂
         /// </summary>
         public void SettingCallback(CCObject pSender)
         {
-            try
-            {
-                SceneController.RunScene(EnumScene.Setting);
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+            SceneController.RunScene(EnumScene.Setting);
         }
         /// <summary>
-        /// ø™ º”Œœ∑ ¬º˛
+        /// ÂºÄÂßãÊ∏∏Êàè‰∫ã‰ª∂
         /// </summary>
         public void StartCallback(CCObject pSender)
         {
-            try
-            {
-                SceneController.RunScene(EnumScene.Question);
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+            SceneController.RunScene(EnumScene.Question);
         }
         /// <summary>
-        /// ÕÀ≥ˆ ¬º˛
+        /// ÈÄÄÂá∫‰∫ã‰ª∂
         /// </summary>
         /// <param name="pSender"></param>
         public void closeCallback(CCObject pSender)
         {
-            try
-            {
-                SceneController.ExitGame();
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+            SceneController.ExitGame();
         }
         public void WordListClick(CCObject pSender)
         {
-            try
-            {
-                SceneController.RunScene(EnumScene.WordList);
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+            SceneController.RunScene(EnumScene.WordList);
         }
         public void WordAddClick(CCObject pSender)
         {
-            try
-            {
-                SceneController.RunScene(EnumScene.AddWord);
-            }            
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+            SceneController.RunScene(EnumScene.AddWord);
         }
     }
 }

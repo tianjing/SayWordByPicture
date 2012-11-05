@@ -1,4 +1,4 @@
-using System;
+锘縰sing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,7 +35,7 @@ namespace SayWordByPicture.Lib.Core
         #endregion
 
         /// <summary>
-        /// 数组长度
+        /// 鏁扮粍闀垮害
         /// </summary>
         public Int32 Count { get { if (null == m_ByteBuffe)return 0; return m_ByteBuffe.Length; } }
 
@@ -60,18 +60,20 @@ namespace SayWordByPicture.Lib.Core
         {
             return Texture2D.FromStream(p_Device, ToStream());
         }
-#if WINPHONE
         public SoundEffect ToSoundEffect()
         {
+#if WINPHONE
             return SoundEffect.FromStream(ToStream());
-        }
 #endif
+            return null;
+
+        }
         public byte[] ToArrary()
         {
             return m_ByteBuffe;
         }
         #endregion
-        
+
         #region  static
         /// <summary>
         /// Create ByteBuffe From Stream

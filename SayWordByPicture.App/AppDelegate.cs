@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,10 +17,10 @@ namespace SayWordByPicture.App
     public class AppDelegate : CCApplication
     {
         /// <summary>
-        /// ¹¹Ôì
+        /// æ„é€ 
         /// </summary>
-        /// <param name="game">ÓÎÏ·¶ÔÏó</param>
-        /// <param name="graphics">»­Í¼¶ÔÏó</param>
+        /// <param name="game">æ¸¸æˆå¯¹è±¡</param>
+        /// <param name="graphics">ç”»å›¾å¯¹è±¡</param>
         public AppDelegate(Game game, GraphicsDeviceManager graphics)
             : base(game, graphics)
         {
@@ -33,7 +33,7 @@ namespace SayWordByPicture.App
             Data.DataManager.LoadData();
         }
         /// <summary>
-        /// ³õÊ¼»¯
+        /// åˆå§‹åŒ–
         /// </summary>
         public override bool initInstance()
         {
@@ -41,11 +41,11 @@ namespace SayWordByPicture.App
         }
 
         /// <summary>
-        ///  ¼ÓÔØÓÎÏ·
+        ///  åŠ è½½æ¸¸æˆ
         /// </summary>
         /// <returns>
-        ///  true  ¼ÓÔØ³É¹¦
-        ///  false ¼ÓÔØÊ§°Ü
+        ///  true  åŠ è½½æˆåŠŸ
+        ///  false åŠ è½½å¤±è´¥
         /// </returns>
         public override bool applicationDidFinishLaunching()
         {
@@ -61,7 +61,7 @@ namespace SayWordByPicture.App
         }
 
         /// <summary>
-        /// ÓÎÏ·½øÈëºóÌ¨µÄ³öÂ·£¨ÔİÍ£ÓÎÏ·£©
+        /// æ¸¸æˆè¿›å…¥åå°çš„å‡ºè·¯ï¼ˆæš‚åœæ¸¸æˆï¼‰
         /// </summary>
         public override void applicationDidEnterBackground()
         {
@@ -82,7 +82,7 @@ namespace SayWordByPicture.App
             base.Update(gameTime);
         }
         /// <summary>
-        ///ÓÎÏ·´ÓºóÌ¨±äÎªÇ°Ì¨µÄ´¦Àí£¨»Ö¸´ÓÎÏ·£©
+        ///æ¸¸æˆä»åå°å˜ä¸ºå‰å°çš„å¤„ç†ï¼ˆæ¢å¤æ¸¸æˆï¼‰
         /// </summary>
         public override void applicationWillEnterForeground()
         {

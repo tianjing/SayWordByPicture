@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +15,7 @@ namespace PhoneServices.Interface
         /// <returns></returns>
         bool TryGetValue(String p_Key,out Object p_Value);
         /// <summary>
-        /// set app save value by key £¨can save data£©
+        /// set app save value by key ï¼ˆcan save dataï¼‰
         /// </summary>
         /// <param name="p_Key">key</param>
         /// <param name="p_Value">value</param>

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,48 +20,49 @@ namespace SayWordByPicture.Media
                 case Language.Chinese:
                     if (p_Word.HasChineseAudio)
                     {
-                        p_Word.PlayChinese();
+                        Play(p_Word.ChineseAudioFilePath);
                     }
                     else
                     {
                         if (!NetworkManage.Current.IsConnection)
                         {
-                            throw new MessageException("ÎÞÍøÂç");
+                            throw new MessageException("æ— ç½‘ç»œ");
                         }
                         TextToSpeech.Current.GetSound(
                             Language.Chinese.GetDescription(),
                             p_Word.ChineseName,
-                            (obj) =>
-                            {
-                                Storage.Current.CreateFile(p_Word.ChineseAudioFilePath, Lib.Core.ByteBuffe.FromStream((Stream)obj).ToArrary());
+                            (obj) => {
+                                Storage.Current.CreateFile(p_Word.ChineseAudioFilePath, Lib.Core.ByteBuffe.FromStream(obj).ToArrary());
+                                MediaPlay.Current.Play(p_Word.ChineseAudioFilePath);
                             });
-                        // TextToSpeech.TextToSpeech down = new TextToSpeech.TextToSpeech();
-                        // down.GetSoud(Language.Chinese, p_Word);
                     }
                     break;
                 case Language.Enlish:
                 default:
                     if (p_Word.HasEnglishAudio)
                     {
-                        p_Word.PlayEnglish();
+                        Play(p_Word.EnglishAudioFilePath);
                     }
                     else
                     {
                         if (!NetworkManage.Current.IsConnection)
                         {
-                            throw new MessageException("ÎÞÍøÂç");
+                            throw new MessageException("æ— ç½‘ç»œ");
                         }
                         TextToSpeech.Current.GetSound(
-                            Language.Enlish.GetDescription(),
-                            p_Word.EnglishName,
-                            (obj) =>
-                            {
-                                Storage.Current.CreateFile(p_Word.EnglishAudioFilePath, Lib.Core.ByteBuffe.FromStream((Stream)obj).ToArrary());
-                            });
+                             Language.Enlish.GetDescription(),
+                             p_Word.EnglishName,
+                             (obj) => {
+                                 Storage.Current.CreateFile(p_Word.EnglishAudioFilePath, Lib.Core.ByteBuffe.FromStream(obj).ToArrary());
+                                 MediaPlay.Current.Play(p_Word.EnglishAudioFilePath);
+                             });
                     }
                     break;
             }
         }
-
+        public static void Play(String p_FilePath)
+        {
+            MediaPlay.Current.Play(p_FilePath);
+        }
     }
 }

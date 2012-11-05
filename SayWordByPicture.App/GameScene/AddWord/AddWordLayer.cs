@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,9 +7,11 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework;
 using SayWordByPicture.Data;
+#if WINPHONE
+using Microsoft.Phone.Tasks;
+#endif
 using System.IO;
 using SayWordByPicture.Lib.Core;
-using SayWordByPicture.App.Photo;
 namespace SayWordByPicture.App.GameScene.AddWord
 {
     internal sealed class AddWordLayer : CCLayer
@@ -43,21 +45,13 @@ namespace SayWordByPicture.App.GameScene.AddWord
         }
         private void ShowPicture()
         {
-            try
-            {
-                CCSprite sprite = CCSprite.spriteWithTexture(m_Picture);
-                sprite.position = new CCPoint(240, 590);
-                addChild(sprite, 0);
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+            CCSprite sprite = CCSprite.spriteWithTexture(m_Picture);
+            sprite.position = new CCPoint(240, 590);
+            addChild(sprite, 0);
         }
 
         private void ShowName()
         {
-
             if (null != m_newChinese)
             {
                 try
@@ -65,11 +59,11 @@ namespace SayWordByPicture.App.GameScene.AddWord
                     m_ChineseLabel.setString(m_newChinese);
                     m_Word.ChineseName = m_newChinese;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
                     m_newChinese = m_Word.ChineseName;
-                    IAsyncResult ar =
-                    Guide.BeginShowMessageBox("Ã· æ", "ƒ˙ ‰»ÎµƒŒƒ◊÷≤ªƒ‹ ∂±£°", new List<String> { "»∑∂®" }, 0, MessageBoxIcon.Alert, null, new Object());
+                    IAsyncResult ar = 
+                    Guide.BeginShowMessageBox("ÊèêÁ§∫", "ÊÇ®ËæìÂÖ•ÁöÑÊñáÂ≠ó‰∏çËÉΩËØÜÂà´ÔºÅ", new List<String> { "Á°ÆÂÆö" }, 0, MessageBoxIcon.Alert, null, new Object());
                     Guide.EndShowMessageBox(ar);
                 }
             }
@@ -80,11 +74,11 @@ namespace SayWordByPicture.App.GameScene.AddWord
                     m_EnglishLabel.setString(m_newEnglish);
                     m_Word.EnglishName = m_newEnglish;
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
-                    m_newEnglish = m_Word.EnglishName;
-                    IAsyncResult ar =
-                    Guide.BeginShowMessageBox("Ã· æ", "ƒ˙ ‰»ÎµƒŒƒ◊÷≤ªƒ‹ ∂±£°", new List<String> { "»∑∂®" }, 0, MessageBoxIcon.Alert, null, new Object());
+                     m_newEnglish=m_Word.EnglishName;
+                    IAsyncResult ar = 
+                    Guide.BeginShowMessageBox("ÊèêÁ§∫", "ÊÇ®ËæìÂÖ•ÁöÑÊñáÂ≠ó‰∏çËÉΩËØÜÂà´ÔºÅ", new List<String> { "Á°ÆÂÆö" }, 0, MessageBoxIcon.Alert, null, new Object());
                     Guide.EndShowMessageBox(ar);
                 }
             }
@@ -106,7 +100,7 @@ namespace SayWordByPicture.App.GameScene.AddWord
         private void AddImageButton()
         {
             CCMenuItemImage image = CCMenuItemImage.itemFromNormalImage("image/ButtonNormal", "image/ButtonClick", this, AddImageClick);
-            CCLabelTTF text = CCLabelTTF.labelWithString("—°‘ÒÕº∆¨", "ChineseContent", 28);
+            CCLabelTTF text = CCLabelTTF.labelWithString("ÈÄâÊã©ÂõæÁâá", "ChineseContent", 28);
             text.Color = new ccColor3B(Color.Black);
             CCMenuItemLabel label = CCMenuItemLabel.itemWithLabel(text);
 
@@ -117,31 +111,26 @@ namespace SayWordByPicture.App.GameScene.AddWord
             m_CurrPostion.y -= image.contentSize.height;
             m_CurrPostion.y -= StillWhite;
         }
+
         private void AddImageClick(CCObject p_Sender)
         {
-            try
-            {
-                PhotoChooser photoChooser = new PhotoChooser();
-                photoChooser.Completed += SelectPictureComplete;
-                photoChooser.SelectPhoto();
-            }
-            catch (Exception e)
-            {
-                ExceptionHelper.ExceptionProcess(e);
-            }
+#if WINPHONE
+            PhotoChooserTask photoChooserTask = new PhotoChooserTask();
+            photoChooserTask.Completed += SelectPictureComplete;
+            photoChooserTask.ShowCamera = true;
+            photoChooserTask.Show();
+#endif
         }
-        private void SelectPictureComplete(Object sender, PhotoEventArgs e)
+#if WINPHONE
+        private void SelectPictureComplete(Object sender, PhotoResult e)
         {
-            try
+            if (null == e.Error && e.TaskResult == TaskResult.OK)
             {
-                m_Picture = Media.PictureManager.GetCCTexture2D(e.PhotoSteam, 220, 380, false);
-                m_Word.PictureFile = Path.GetFileName(e.FileName);
-            }
-            catch (Exception ee)
-            {
-                ExceptionHelper.ExceptionProcess(ee);
+                m_Picture = Media.PictureManager.GetCCTexture2D(e.ChosenPhoto, 220, 380, false);
+                m_Word.PictureFile = Path.GetFileName(e.OriginalFileName);
             }
         }
+#endif
         #endregion
 
 
@@ -160,7 +149,7 @@ namespace SayWordByPicture.App.GameScene.AddWord
         private void AddChineseItem()
         {
             CCMenuItemImage image = LoadTextBoxSprite();
-            CCLabelTTF text = CCLabelTTF.labelWithString("÷–Œƒ", "ChineseTitle", 28);
+            CCLabelTTF text = CCLabelTTF.labelWithString("‰∏≠Êñá", "ChineseTitle", 28);
             text.Color = new ccColor3B(Color.Black);
             CCMenuItemLabel label = CCMenuItemLabel.itemWithLabel(text);
 
@@ -185,7 +174,7 @@ namespace SayWordByPicture.App.GameScene.AddWord
         {
             CCMenuItemImage image = LoadTextBoxSprite();
 
-            CCLabelTTF text = CCLabelTTF.labelWithString("”¢Œƒ", "ChineseTitle", 28);
+            CCLabelTTF text = CCLabelTTF.labelWithString("Ëã±Êñá", "ChineseTitle", 28);
             text.Color = new ccColor3B(Color.Black);
             CCMenuItemLabel label = CCMenuItemLabel.itemWithLabel(text);
 
@@ -221,7 +210,7 @@ namespace SayWordByPicture.App.GameScene.AddWord
             {
                 CCLabelTTF text = image.parent.children[0].children[0] as CCLabelTTF;
                 String languagename = text.getString();
-                if (String.Equals("÷–Œƒ", languagename))
+                if (String.Equals("‰∏≠Êñá", languagename))
                 {
                     m_newChinese = res;
                 }
@@ -249,14 +238,14 @@ namespace SayWordByPicture.App.GameScene.AddWord
         private void AddFormButton()
         {
             CCMenuItemImage imagesubmit = CCMenuItemImage.itemFromNormalImage("image/ButtonNormal", "image/ButtonClick", this, AddImageClick);
-            CCLabelTTF textsubmit = CCLabelTTF.labelWithString("»∑∂®", "ChineseContent", 28);
+            CCLabelTTF textsubmit = CCLabelTTF.labelWithString("Á°ÆÂÆö", "ChineseContent", 28);
             textsubmit.Color = new ccColor3B(Color.Black);
             CCMenuItemLabel labelsubmit = CCMenuItemLabel.itemWithLabel(textsubmit);
             labelsubmit.position = new CCPoint(imagesubmit.contentSize.width / 2, imagesubmit.contentSize.height / 2);
             imagesubmit.addChild(labelsubmit);
 
             CCMenuItemImage imagecancel = CCMenuItemImage.itemFromNormalImage("image/ButtonNormal", "image/ButtonClick", this, AddImageClick);
-            CCLabelTTF textcancel = CCLabelTTF.labelWithString("»°œ˚", "ChineseContent", 28);
+            CCLabelTTF textcancel = CCLabelTTF.labelWithString("ÂèñÊ∂à", "ChineseContent", 28);
             textcancel.Color = new ccColor3B(Color.Black);
             CCMenuItemLabel labelcancel = CCMenuItemLabel.itemWithLabel(textcancel);
             labelcancel.position = new CCPoint(imagecancel.contentSize.width / 2, imagecancel.contentSize.height / 2);

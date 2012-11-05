@@ -32,8 +32,9 @@ namespace SayWordByPicture
             // Windows Phone 的默认帧速率为 30 fps。
             TargetElapsedTime = TimeSpan.FromTicks(333333);
             // 延长锁定时的电池寿命。
+#if WINDOWS_PHONE
             InactiveSleepTime = TimeSpan.FromSeconds(1);
-            
+#endif
             CCApplication application = new AppDelegate(this, graphics);
             this.Components.Add(application);
         }
