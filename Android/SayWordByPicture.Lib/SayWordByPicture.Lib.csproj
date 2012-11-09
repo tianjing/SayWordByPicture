@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{077F1C1D-0119-46AF-A431-759D022BCD4C}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SayWordByPicture.Lib</RootNamespace>
+    <AssemblyName>SayWordByPicture.Lib</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;ANDROID</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="cocos2d-xna">
+      <HintPath>..\Lib\cocos2d-xna.dll</HintPath>
+    </Reference>
+    <Reference Include="Lidgren.Network.Android">
+      <HintPath>..\Lib\Lidgren.Network.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework.Android">
+      <HintPath>..\Lib\MonoGame.Framework.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\..\SayWordByPicture.Lib\Core\Bitmap.cs">
+      <Link>Core\Bitmap.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SayWordByPicture.Lib\Core\ByteBuffe.cs">
+      <Link>Core\ByteBuffe.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SayWordByPicture.Lib\Core\Convent.cs">
+      <Link>Core\Convent.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SayWordByPicture.Lib\Core\FileNames.cs">
+      <Link>Core\FileNames.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SayWordByPicture.Lib\Core\Language.cs">
+      <Link>Core\Language.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SayWordByPicture.Lib\Core\RandomHelper.cs">
+      <Link>Core\RandomHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SayWordByPicture.Lib\CusException\MessageException.cs">
+      <Link>CusException\MessageException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SayWordByPicture.Lib\Display\ScreenHelper.cs">
+      <Link>Display\ScreenHelper.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ItemGroup />
+</Project>

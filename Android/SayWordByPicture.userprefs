@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ClassPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="D:\OpenSourceProject\SayWordByPicture\PhoneServices\WP7\TextToSpeech.cs" line="35" />
+      <Breakpoint file="d:\OpenSourceProject\SayWordByPicture\SayWordByPicture.App\Media\AudioManager.cs" line="35" />
+      <Breakpoint file="d:\OpenSourceProject\SayWordByPicture\SayWordByPicture.App\Media\AudioManager.cs" line="56" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SayWordByPicture AndroidDeviceId-Debug="emulator-5554" />
+</Properties>
