@@ -13,7 +13,7 @@ namespace SayWordByPicture.App.GameScene.Start
         {
             base.init();
 
-            CCDirector.sharedDirector().deviceOrientation = ccDeviceOrientation.CCDeviceOrientationPortrait;
+            CCDirector.sharedDirector().deviceOrientation = ccDeviceOrientation.CCDeviceOrientationLandscapeLeft;
         }
         public override void Run()
         {

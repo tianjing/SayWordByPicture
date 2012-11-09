@@ -12,8 +12,7 @@ namespace SayWordByPicture.App.GameScene.WordManage
         public WordListScene()
         {
             base.init();
-           CCDirector.sharedDirector().deviceOrientation= ccDeviceOrientation.CCDeviceOrientationLandscapeLeft;
-
+           CCDirector.sharedDirector().deviceOrientation= ccDeviceOrientation.CCDeviceOrientationPortrait;
         }
 
         public override void draw()

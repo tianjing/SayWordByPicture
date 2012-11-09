@@ -32,10 +32,10 @@ namespace PhoneServices
 
 		public void SetValue (string p_Key, object p_Value)
 		{
-			String res = p_Value as String;
-			if (null != res) {
-				m_Edit.PutString (p_Key, res);
-                m_Edit.Commit();
+			if (null != p_Value) {
+				m_Edit.PutString (p_Key, p_Value.ToString());
+					m_Edit.Commit ();
+
 			}
 		}
 
